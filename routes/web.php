@@ -1,0 +1,255 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\RequestFormController;
+use App\Http\Controllers\MyRecordController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\EnrollController;  
+use App\Http\Controllers\AcceptStudentCrontroller;
+use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\StudentProfileController;
+use App\Http\Controllers\CreateClassRoomController;
+use App\Http\Controllers\TotalGradesController;
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::get('/',[HomeController::class, 'index'] );
+
+// Route::get('/chooselog', [HomeController::class, 'choose']);
+
+
+//------------------------Home Route-------------------------//
+    Route::get('/', [HomeController::class, 'home']);
+
+    Route::get('home/enroll',[HomeController::class, 'enroll']);
+
+    Route::post('home/enroll',[EnrollController::class, 'enroll']);
+
+    
+
+
+    Route::get('/login', [AuthController::class, 'login']);
+
+    Route::post('login', [AuthController::class, 'Authlogin']);
+
+    Route::get('logout', [AuthController::class, 'logout']);
+
+
+
+
+//-------------------------------------------------Admin Route--------------------------------------------//
+
+    Route::group(['middleware' => 'admin'], function (){
+
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/list', [AdminController::class, 'list']);
+    Route::get('admin/add', [AdminController::class, 'add']);
+    Route::post('admin/add', [AdminController::class, 'insert']);
+    Route::get('admin/edit/{id}', [AdminController::class, 'edit']);
+    Route::post('admin/edit/{id}', [AdminController::class, 'update']);
+    Route::get('admin/remove/{id}', [AdminController::class, 'remove']);
+    
+//--------------------------------------------Admin Student Route-----------------------------------------//
+        
+    Route::get('admin/student/list', [StudentController::class, 'list']);
+    Route::get('admin/student/add', [StudentController::class, 'add']); //Direct To add Page
+    Route::post('admin/student/add', [StudentController::class, 'insert']);
+    Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']); //Direct To Edit Page
+    Route::post('admin/student/edit/{id}', [StudentController::class, 'update']);
+    Route::get('admin/student/list{id}', [StudentController::class, 'remove']);
+    
+  
+
+
+
+
+//----------------------------------------------Admin Enroll Route----------------------------------------//
+
+    Route::get('admin/enroll', [AdminController::class, 'list_enroll']);
+    Route::get('admin/view/{id}', [AdminController::class, 'enroll_view']);
+
+
+
+//---------------------------------------Admin Request Form Route-----------------------------------------//
+
+    
+
+
+
+//-----------------------------------------Admin Create Subject Route-------------------------------------//
+
+    Route::get('admin/subject/list', [SubjectController::class, 'list']);
+
+
+
+//-------------------------------------------------Admin Class Route--------------------------------------//
+
+    Route::get('admin/class/list', [ClassController::class, 'list']);
+    Route::post('admin/class/list', [ClassController::class, 'add']);
+    Route::post('admin/class/list{id}', [ClassController::class, 'edit']);
+    Route::get('admin/class/list{class_id}', [ClassController::class, 'remove']);
+
+
+    //-------------------------------------------------Admin Class Faculty Route--------------------------------------//
+
+    Route::get('admin/faculty/list', [FacultyController::class, 'list']);
+    Route::get('admin/faculty/add', [FacultyController::class, 'add']); //Direct To add Page
+    Route::post('admin/faculty/add', [FacultyController::class, 'insert']);
+    Route::get('admin/faculty/edit/{id}', [FacultyController::class, 'edit']); //Direct To Edit Page
+    Route::post('admin/faculty/edit/{id}', [FacultyController::class, 'update']);
+    Route::get('admin/faculty/list{id}', [FacultyController::class, 'remove']);
+  
+
+        //-------------------------------------------------Admin Class Teacher Route--------------------------------------//
+
+    Route::get('admin/teacher/list', [TeacherController::class, 'list']);
+    Route::get('admin/teacher/add', [TeacherController::class, 'add']); //Direct To add Page
+    Route::post('admin/teacher/add', [TeacherController::class, 'insert']);
+    Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit']); //Direct To Edit Page
+    Route::post('admin/teacher/edit/{id}', [TeacherController::class, 'update']);
+    Route::get('admin/teacher/list{id}', [TeacherController::class, 'remove']);
+    
+
+
+});
+
+
+
+//-------------------------------------------------Teacher Route-----------------------------------------//
+
+    Route::group(['middleware' => 'teacher'], function (){
+
+    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
+    
+
+
+
+
+
+
+
+    
+});
+
+
+
+//-------------------------------------------------Student Route-----------------------------------------//
+
+    Route::group(['middleware' => 'student'], function (){
+
+    Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
+
+    Route::get('student/request/myrequest', [RequestFormController::class, 'my_request']); //as a list
+
+    Route::get('student/request/add', [RequestFormController::class, 'add']); //Direct To add Page
+
+    Route::post('student/request/add', [RequestFormController::class, 'insert']);
+
+    //----------------Student Request Route------------------//
+    Route::get('student/request/myrequest/remove{id}', [RequestFormController::class, 'remove_student_side']);
+    
+
+    
+    
+
+});
+
+
+
+
+//-------------------------------------------------Faculty Route-----------------------------------------//
+
+    Route::group(['middleware' => 'faculty'], function (){
+
+    Route::get('/faculty/dashboard', [DashboardController::class, 'dashboard']);
+
+    Route::get('faculty/request/list', [RequestFormController::class, 'list']);
+
+    Route::get('faculty/request/list{id}', [RequestFormController::class, 'remove']);
+
+    Route::get('faculty/request/list/approved{form_id}', [RequestFormController::class, 'approved']);
+
+    Route::get('faculty/request/list/decline{form_id}', [RequestFormController::class, 'decline']);
+
+
+    
+        // Subject
+    Route::get('faculty/subject/list', [SubjectController::class, 'list']);
+
+    Route::get('faculty/subject/list{id}', [SubjectController::class, 'remove']);
+
+    Route::post('faculty/subject/list', [SubjectController::class, 'insert']);
+
+    Route::get('faculty/subject/edit{subject_id}', [SubjectController::class, 'edit']);
+
+    Route::post('faculty/subject/edit{subject_id}', [SubjectController::class, 'update']);
+
+    Route::get('faculty/enroll/list', [EnrollController::class, 'list']);
+
+
+    //School Year
+
+    Route::get('faculty/school_year/list', [SchoolYearController::class, 'list']);
+
+    Route::post('faculty/school_year/list', [SchoolYearController::class, 'insert']); //In the list page but can you add directly add 
+
+    Route::get('faculty/school_year/list{school_year_id}', [SchoolYearController::class, 'remove']);
+
+    Route::get('faculty/school_year/edit{school_year_id}', [SchoolYearController::class, 'edit']); // Direct to edit page
+
+    Route::post('faculty/school_year/edit{school_year_id}', [SchoolYearController::class, 'update']); // Direct to edit page
+
+    
+
+    //Class
+    
+    Route::get('faculty/class/list', [ClassController::class, 'list']);
+
+    Route::post('faculty/class/list', [ClassController::class, 'insert']); //In the list page but can you add directly add 
+
+    Route::get('faculty/class/list{class_id}', [ClassController::class, 'remove']);
+
+    Route::get('faculty/class/edit{class_id}', [ClassController::class, 'edit']); // Direct to edit page
+
+    Route::post('faculty/class/edit{class_id}', [ClassController::class, 'update']); // Direct to edit page
+
+     //Student List
+
+    Route::get('faculty/student/list', [StudentProfileController::class, 'list']);
+    Route::get('faculty/student/search', [StudentProfileController::class, 'search']);
+
+     //Accept Student Enrolles
+    Route::get('faculty/enroll/accept{id}', [AcceptStudentCrontroller::class, 'accept']);
+
+    //Create class or class room
+    Route::get('faculty/create_class/list', [CreateClassRoomController::class, 'list']);
+    Route::get('faculty/create_class/add',  [CreateClassRoomController::class, 'add']);
+    Route::post('faculty/create_class/add', [CreateClassRoomController::class, 'insert']);
+
+
+
+    
+    Route::get('faculty/grades/list', [TotalGradesController::class, 'list']);
+    Route::get('faculty/grades/list_grades{student_profile_id}', [TotalGradesController::class, 'grades_list']);
+
+});
