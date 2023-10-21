@@ -40,11 +40,5 @@ charts.forEach(function (chart) {
   });
 });
 
-$(document).ready(function () {
-  $(".data-table").each(function (_, table) {
-    $(table).DataTable();
-  });
-});
 
 
-var p = document.getElementById("myPassword").required;

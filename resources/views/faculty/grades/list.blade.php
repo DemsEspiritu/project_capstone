@@ -5,18 +5,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- logo page -->
     <link rel="shorcut icon" href="{{asset('assets/img/school-logo.png')}}">
 
+    <!-- Icon Style -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap5.min.css')}}">
+
+    <!-- SBootstrap -->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
-
-    <!-- Style -->
+    <!-- Style for css -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+
+    <!-- Style for notif -->
     <link rel="stylesheet" href="{{asset('assets/css/notify.css')}}">
 
+    <!-- Style for table -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 
     <title>Masoli High School</title>
@@ -85,22 +91,19 @@
           <ul class="navbar-nav">
 
 
-            <li>
+                       <!-- SIDE BAR MENU -->
+                       <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
                 <span>Dashboard</span></a>
 
-            <a href="/faculty/request/list" class="nav-link px-3 pt-3">
-                <span class="me-2"><i class="fa-solid fa-book me-2"></i></span>
-                <span>Request List</span></a>
+        
 
               <a href="/faculty/subject/list" class="nav-link px-3 pt-3">
                 <span class="me-2"><i class="fa-solid fa-layer-group  me-2"></i></span>
                 <span>Subject</span></a>
 
-            <a href="/faculty/enroll/list" class="nav-link px-3 pt-3">
-                <span class="me-2"><i class="fa-solid fa-restroom me-2"></i></span>
-                <span>Request Enroll</span></a>
+           
 
             <a href="/faculty/school_year/list" class="nav-link px-3 pt-3">
                 <span class="me-2"><i class="fa-solid fa-calendar-days me-2"></i></span>
@@ -109,10 +112,32 @@
             <a href="/faculty/class/list" class="nav-link px-3 pt-3">
                 <span class="me-2"><i class="fa-solid fa-school me-2"></i></span>
                 <span>Class</span></a>
-              <br>
+
+
+                <!-- Student Concern -->
+                <hr style="color:white;">
+                <li class="menu-header small text-uppercase">
+                   <span class="menu-header-text" style="padding-left:50px; padding-top:20px; color:white;">Student Concern</span>
+              </li>
+
+              <a href="/faculty/enroll/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-restroom me-2"></i></span>
+                <span>Request Enroll</span>
+              </a>
+
+              <a href="/faculty/request/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-book me-2"></i></span>
+                <span>Request Documents</span>
+              </a>
+
+                      <!-- Records -->
+              <hr style="color:white;">
+              
                 <li class="menu-header small text-uppercase">
                    <span class="menu-header-text" style="padding-left:80px; padding-top:20px; color:white;">Records</span>
               </li>
+
+              
 
               <a href="/faculty/grades/list" class="nav-link  px-3 pt-3">
                           <span class="me-2"><i class="fa-solid fa-file-lines me-2"></i></span>
@@ -128,8 +153,10 @@
 
               <a href="{{ url('logout') }}" class="nav-link px-3 bg-danger pt-3">
                 <span class="me-2"><i class="fas fa-power-off me-2"></i></span>
-                <span>Logout</span></a>
+                <span>Logout</span>
+              </a>
             </li>
+             <!--END SIDE BAR MENU -->
           </ul>
         </nav>
       </div>
@@ -182,12 +209,22 @@
                 </div>
               </form>
             </div>
-            
-          
-             <!-- /.card-header -->
-             <div class="card-body">
-                <table class="table table-sm table-bordered">
-                  <thead>
+          </div>
+        </div>
+
+
+        <!-- Admin Table List -->
+        <div class="container-fluid mt-2">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Student Grade</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                <thead>
                     <tr>
                       <th>LRN</th>
                       <th>Name</th>
@@ -208,7 +245,7 @@
                       <a href="{{ url('faculty/grades/list_grades'.$student->student_profile_id) }}" class="btn btn-success btn-sm" style="color:white;"><i class="fa-regular fa-eye p-1" style="color: #fafafa;"></i>View Records</a>
                       </td>
                     </tr>
-                    @include('faculty/student/modal_view')
+            
                     @endforeach
                   </tbody>
                   
@@ -217,35 +254,17 @@
                 {!! $data['getStudentProfile']->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
                 </div>
                 <!-- End of pagination -->
-
-            </div>
-
-
-          </div>
-        </div>
+              </div>
+            <!-- End Of table -->
     
-</main>
 
+      <!-- Scripts -->
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-    <script src="{{asset('assets/js/jquery-3.5.1.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-
-            $('.sub-btn').click(function(){
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-          });
-
-        })
-    </script>
-    
-    <!-- Scripts -->
     <script src="{{asset('assets/js/script.js')}}"></script>
-    
     @notifyJs
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    </main>
   </body>
 </html>

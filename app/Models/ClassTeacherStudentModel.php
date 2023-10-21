@@ -17,7 +17,47 @@ class ClassTeacherStudentModel extends Model
         'subject_id',
         'student_profile_id',
         'teacher_id',
+        // 'created_by'
     ];
+
+
+
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class);
+    }
+
+    public function schoolyear()
+    {
+        return $this->belongsTo(SchoolYear::class);
+    }
+
+    public function subject()
+    {
+        return $this->hasMany(SubjectModel::class);
+    }
+
+    public function student_profile()
+    {
+        return $this->hasMany(StudentProfile::class);
+    }
+
+    public function teacher()
+    {
+        return $this->hasMany(User::class);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
 
     // static public function getAlreadyFirst($class_id,$teacher_id,$school_year_id,$subject_id,$student_profile_id)
     // {
@@ -44,4 +84,3 @@ class ClassTeacherStudentModel extends Model
         
     
     // }
-}
