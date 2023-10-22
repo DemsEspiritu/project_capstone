@@ -122,12 +122,30 @@
                           <span class="me-2"><i class="fa-solid fa-school me-2"></i></span>
                               <span>Student List</span></i>
                         </a>
-              <br>
+              
 
-              <a href="{{ url('logout') }}" class="nav-link px-3 bg-danger pt-3">
-                <span class="me-2"><i class="fas fa-power-off me-2"></i></span>
-                <span>Logout</span>
-              </a>
+              <hr style="color:white;">
+              
+                <li class="menu-header small text-uppercase">
+                   <span class="menu-header-text" style="padding-left:55px; padding-top:20px; color:white;">Users Account</span>
+              </li>
+
+              <a href="/faculty/faculty_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-people-line"></i></span>
+                <span>Admin List</span></a>
+
+
+            <a href="/faculty/teacher_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-chalkboard-user me-2"></i></span>
+                <span>Teacher List</span></a>
+
+            <a href="/faculty/student_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-people-group"></i></span>
+                <span>Student List</span></a>
+
+
+
+
             </li>
              <!--END SIDE BAR MENU -->
              
@@ -141,6 +159,49 @@
         <div class="row">
           <div class="col-md-12">
             <h4>Dashboard</h4>
+            <div class="row">
+          <div class="col-md-3 mb-3">
+            <div class="card bg-primary text-white h-100">
+              <div class="card-body py-5">
+                <h4>Admin</h4>
+                <h1 class="total text-center">{{ $totalFaculty}} <i class="fa-solid fa-users"></i> </h1>
+              </div>
+              <div class="card-footer d-flex">
+             
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-dark h-100">
+              <div class="card-body py-5">
+                <h4>Teacher</h4>
+                <h1 class="total text-center">{{ $totalTeacher}} <i class="fa-solid fa-chalkboard-user"></i></h1>
+                </div>
+              <div class="card-footer d-flex">
+              
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body py-5">
+                <h4>Student</h4>
+                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-users"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
+                
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
     

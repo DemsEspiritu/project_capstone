@@ -20,13 +20,13 @@ class StudentController extends Controller
     public function list()
     {    
       $data['getStudent'] = User::getStudent();
-      return view('admin.student.list',compact("data"));
+      return view('faculty.student_user.list',compact("data"));
          
     }
 
     public function add()
     {    
-         return view('admin.student.add');
+         return view('faculty.student_user.add');
  
     }
 
@@ -59,7 +59,7 @@ class StudentController extends Controller
  
 
      notify()->success('Student Successfully Create!');
-     return redirect('admin/student/list');
+     return redirect('faculty/student_user/list');
     }
 
 
@@ -69,7 +69,7 @@ class StudentController extends Controller
       $data['getRecord'] = User::getSingle($id);
       if(!empty($data['getRecord']))
       {
-           return view('admin.student.edit',compact("data"));
+           return view('faculty.student_user.edit',compact("data"));
       }
       else
       {
@@ -98,7 +98,7 @@ class StudentController extends Controller
            }
            $user->save();
            notify()->success('Student Successfully Updated!');
-           return redirect('admin/student/list');
+           return redirect('faculty/student_user/list');
       }
  
 
@@ -110,7 +110,7 @@ class StudentController extends Controller
             $post->delete();
 
             notify()->success('Successfully Deleted!');
-            return redirect('admin/student/list');
+            return redirect('faculty/student_user/list');
 
     }
 

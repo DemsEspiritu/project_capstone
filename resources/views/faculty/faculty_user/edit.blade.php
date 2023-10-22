@@ -1,12 +1,4 @@
-
-
-
-
-
-
-
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -46,13 +38,7 @@
         <div class="collapse navbar-collapse" id="topNavBar">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle ms-2"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span style="color:white;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
               <i class="fa-solid fa-user"></i>
               </a>
@@ -76,8 +62,8 @@
           <ul class="navbar-nav">
 
 
-                                   <!-- SIDE BAR MENU -->
-            <li>
+                        <!-- SIDE BAR MENU -->
+                        <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
                 <span>Dashboard</span></a>
@@ -164,47 +150,55 @@
         </nav>
       </div>
     </div>
-    <!-- offcanvas -->
+    <!-- Body Admin List Page -->
     <main class="mt-5 pt-5">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h4>Add Subject</h4>
-                <div class="row">
+            <h4>Edit Faculty</h4>
+            <!-- <div class="col-sm-6">
+            <a href="{{ url('admin/add')}}" class="btn btn-primary">Add New Admin</a>
+          </div> -->
+          </div>
+        
+        </div>
+        <div class="row">
           <div class="col-md-12">
             <!-- //Content of Admin List Page -->
             <div class="card card-primary mt-3">
               <div class="card-header bg-secondary">
-                <h6 class="card-title">Subject</h6>
+                <h6 class="card-title">Edit Faculty</h6>
               </div>
               <!-- form start for adding new admin -->
               <form action="" method="post">
                 {{ csrf_field() }}
                 <div class="card-body">
-                <div class="form-group m-2">
-                    <label>Subject Name</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name">
-                    <span style="color:red; font-size:10px;">@error('name'){{ $message}} @enderror</span> 
-                </div>
-                <div class="form-group m-2">
-                    <label>Description</label>
-                    <input type="text" name="description"  class="form-control" placeholder="Description">
-                    </div>
+                  <div class="form-group m-2">
+                    <label>Name</label>
+                    <input type="text" name="name" value="{{ ($data['getRecord']->name) }}" required class="form-control" placeholder="Name">
+                  </div>
+                  <div class="form-group m-2">
+                    <label>Email address</label>
+                    <input type="email" name="email" value="{{ ($data['getRecord']->email) }} " required class="form-control" placeholder="Enter email">
+                    <div style="color: red;">{{old('email') }} {{$errors->first('email')}} </div>
+                  </div>
+                  <div class="form-group m-2">
+                    <label>Password</label>
+                    <input type="text" name="password" id="myPassword" class="form-control" placeholder="Password">
+                    <p>Do you want to change password. Please Add new Password</p>
+                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ url('faculty/subject/list') }}" class="btn btn-danger">Back</a>
+                  <button type="submit" class="btn btn-primary">Update</button>
+                  <a href="{{ url('admin/faculty/list') }}" class="btn btn-danger">Cancel</a>
                 </div>
-            </form>
+              </form>
             </div>
             <!-- end -->
+          </div>
         </div>
-        </div>
-            
-        </div>
-</div>
-</div>
+      </div>
     </main>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>

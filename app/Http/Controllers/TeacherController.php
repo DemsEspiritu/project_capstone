@@ -19,13 +19,13 @@ class TeacherController extends Controller
     public function list()
     {    
       $data['getTeacher'] = User::getTeacher();
-      return view('admin.teacher.list',compact("data"));
+      return view('faculty.teacher_user.list',compact("data"));
          
     }
 
     public function add()
     {    
-         return view('admin.teacher.add');
+         return view('faculty.teacher_user.add');
  
     }
 
@@ -48,7 +48,7 @@ class TeacherController extends Controller
      $user->user_type = 2;
      $user->save();
      notify()->success('Teacher Successfully Create!');
-     return redirect('admin/teacher/list');
+     return redirect('faculty/teacher_user/list');
     }
 
 
@@ -58,7 +58,7 @@ class TeacherController extends Controller
       $data['getRecord'] = User::getSingle($id);
       if(!empty($data['getRecord']))
       {
-           return view('admin.teacher.edit',compact("data"));
+           return view('faculty.teacher_user.edit',compact("data"));
       }
       else
       {
@@ -88,7 +88,7 @@ class TeacherController extends Controller
            $user->save();
  
            notify()->success('Teacher Successfully Updated!');
-           return redirect('admin/teacher/list');
+           return redirect('faculty/teacher_user/list');
       }
  
 
@@ -99,7 +99,7 @@ class TeacherController extends Controller
             $post = User::where('id',$id);
             $post->delete();
             notify()->success('Successfully Deleted!');
-            return redirect('admin/teacher/list');
+            return redirect('faculty/teacher_user/list');
 
     }
 }

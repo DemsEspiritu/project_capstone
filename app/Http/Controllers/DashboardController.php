@@ -10,7 +10,7 @@ use App\Models\User;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        if(Auth::user()->user_type == 1 ){
+        if(Auth::user()->user_type == 4 ){
 
             // $totalAdmin = getAdmin::count();
             // $totalFaculty = getFaculty::count();
@@ -18,14 +18,14 @@ class DashboardController extends Controller
             // $totalStudent = getStudent::count();
 
             $totalAllUser = User::count();
-            $totalAdmin = User::where('user_type', '1')->count(); //admin
+
             $totalTeacher = User::where('user_type', '2')->count(); //teacher
             $totalStudent = User::where('user_type', '3')->count(); //student
-            $totalFaculty = User::where('user_type', '4')->count(); //faculty
+            $totalFaculty = User::where('user_type', '4')->count(); //faculty as a admin
             
 
 
-            return view('admin.dashboard',compact('totalAdmin','totalTeacher','totalStudent','totalFaculty'));
+            return view('faculty.dashboard',compact('totalTeacher','totalStudent','totalFaculty'));
         }
 
         if(Auth::user()->user_type == 2 ){

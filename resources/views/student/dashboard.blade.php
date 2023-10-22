@@ -45,7 +45,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-              <span style="color:white;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
+              <span style="color:white;font-weight:bold; margin-right:10px;">{{Auth::user()->name}} {{Auth::user()->last_name}} {{Auth::user()->middle_name}}</span>
 
               <i class="fa-solid fa-circle-user fa-2xl" style="color: #ffffff;"></i>
               </a>

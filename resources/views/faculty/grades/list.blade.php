@@ -91,8 +91,8 @@
           <ul class="navbar-nav">
 
 
-                       <!-- SIDE BAR MENU -->
-                       <li>
+                               <!-- SIDE BAR MENU -->
+            <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
                 <span>Dashboard</span></a>
@@ -149,12 +149,30 @@
                           <span class="me-2"><i class="fa-solid fa-school me-2"></i></span>
                               <span>Student List</span></i>
                         </a>
-              <br>
+              
 
-              <a href="{{ url('logout') }}" class="nav-link px-3 bg-danger pt-3">
-                <span class="me-2"><i class="fas fa-power-off me-2"></i></span>
-                <span>Logout</span>
-              </a>
+              <hr style="color:white;">
+              
+                <li class="menu-header small text-uppercase">
+                   <span class="menu-header-text" style="padding-left:55px; padding-top:20px; color:white;">Users Account</span>
+              </li>
+
+              <a href="/faculty/faculty_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-people-line"></i></span>
+                <span>Admin List</span></a>
+
+
+            <a href="/faculty/teacher_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-chalkboard-user me-2"></i></span>
+                <span>Teacher List</span></a>
+
+            <a href="/faculty/student_user/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-people-group"></i></span>
+                <span>Student List</span></a>
+
+
+
+
             </li>
              <!--END SIDE BAR MENU -->
           </ul>

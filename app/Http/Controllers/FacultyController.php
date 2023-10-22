@@ -18,14 +18,14 @@ class FacultyController extends Controller
     public function list()
     {    
       $data['getFaculty'] = User::getFaculty();
-      return view('admin.faculty.list',compact("data"));
+      return view('faculty.faculty_user.list',compact("data"));
          
     }
 
 
     public function add()
     {    
-         return view('admin.faculty.add');
+         return view('faculty.faculty_user.add');
  
     }
 
@@ -48,7 +48,7 @@ class FacultyController extends Controller
      $user->user_type = 4;
      $user->save();
      notify()->success('Faculty Successfully Create!');
-     return redirect('admin/faculty/list');
+     return redirect('faculty/faculty_user/list');
     }
 
 
@@ -58,7 +58,7 @@ class FacultyController extends Controller
       $data['getRecord'] = User::getSingle($id);
       if(!empty($data['getRecord']))
       {
-           return view('admin.faculty.edit',compact("data"));
+           return view('faculty.faculty_user.edit',compact("data"));
       }
       else
       {
@@ -87,7 +87,7 @@ class FacultyController extends Controller
            }
            $user->save();
            notify()->success('Faculty Successfully Updated!');
-           return redirect('admin/faculty/list');
+           return redirect('faculty/faculty_user/list');
       }
  
 
@@ -98,7 +98,7 @@ class FacultyController extends Controller
             $post = User::where('id',$id);
             $post->delete();
             notify()->success('Successfully Deleted!');
-            return redirect('admin/faculty/list');
+            return redirect('faculty/faculty_user/list');
 
     }
 }

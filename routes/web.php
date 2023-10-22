@@ -45,9 +45,6 @@ use App\Http\Controllers\TotalGradesController;
 
     Route::post('home/enroll',[EnrollController::class, 'enroll']);
 
-    
-
-
     Route::get('/login', [AuthController::class, 'login']);
 
     Route::post('login', [AuthController::class, 'Authlogin']);
@@ -78,29 +75,6 @@ use App\Http\Controllers\TotalGradesController;
     Route::post('admin/student/edit/{id}', [StudentController::class, 'update']);
     Route::get('admin/student/list{id}', [StudentController::class, 'remove']);
     
-  
-
-
-
-
-//----------------------------------------------Admin Enroll Route----------------------------------------//
-
-    Route::get('admin/enroll', [AdminController::class, 'list_enroll']);
-    Route::get('admin/view/{id}', [AdminController::class, 'enroll_view']);
-
-
-
-//---------------------------------------Admin Request Form Route-----------------------------------------//
-
-    
-
-
-
-//-----------------------------------------Admin Create Subject Route-------------------------------------//
-
-    Route::get('admin/subject/list', [SubjectController::class, 'list']);
-
-
 
 //-------------------------------------------------Admin Class Route--------------------------------------//
 
@@ -120,22 +94,11 @@ use App\Http\Controllers\TotalGradesController;
     Route::get('admin/faculty/list{id}', [FacultyController::class, 'remove']);
   
 
-        //-------------------------------------------------Admin Class Teacher Route--------------------------------------//
-
-    Route::get('admin/teacher/list', [TeacherController::class, 'list']);
-    Route::get('admin/teacher/add', [TeacherController::class, 'add']); //Direct To add Page
-    Route::post('admin/teacher/add', [TeacherController::class, 'insert']);
-    Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit']); //Direct To Edit Page
-    Route::post('admin/teacher/edit/{id}', [TeacherController::class, 'update']);
-    Route::get('admin/teacher/list{id}', [TeacherController::class, 'remove']);
-    
-
-
 });
 
 
 
-//-------------------------------------------------Teacher Route-----------------------------------------//
+//-------------------------------------------------Teacher Account Route-----------------------------------------//
 
     Route::group(['middleware' => 'teacher'], function (){
 
@@ -153,7 +116,7 @@ use App\Http\Controllers\TotalGradesController;
 
 
 
-//-------------------------------------------------Student Route-----------------------------------------//
+//-------------------------------------------------Student Account Route-----------------------------------------//
 
     Route::group(['middleware' => 'student'], function (){
 
@@ -177,7 +140,7 @@ use App\Http\Controllers\TotalGradesController;
 
 
 
-//-------------------------------------------------Faculty Route-----------------------------------------//
+//-------------------------------------------------Faculty Account Route-----------------------------------------//
 
     Route::group(['middleware' => 'faculty'], function (){
 
@@ -192,7 +155,43 @@ use App\Http\Controllers\TotalGradesController;
     Route::get('faculty/request/list/decline{form_id}', [RequestFormController::class, 'decline']);
 
 
-    
+     // user student
+
+    Route::get('faculty/student_user/list', [StudentController::class, 'list']);
+    Route::get('faculty/student_user/add', [StudentController::class, 'add']); //Direct To add Page
+    Route::post('faculty/student_user/add', [StudentController::class, 'insert']);
+    Route::get('faculty/student_user/edit/{id}', [StudentController::class, 'edit']); //Direct To Edit Page
+    Route::post('faculty/student_user/edit/{id}', [StudentController::class, 'update']);
+    Route::get('faculty/student_user/list{id}', [StudentController::class, 'remove']);
+
+     // user faculty as a Admin
+
+     Route::get('faculty/faculty_user/list', [FacultyController::class, 'list']);
+     Route::get('faculty/faculty_user/add', [FacultyController::class, 'add']); //Direct To add Page
+     Route::post('faculty/faculty_user/add', [FacultyController::class, 'insert']);
+     Route::get('faculty/faculty_user/edit/{id}', [FacultyController::class, 'edit']); //Direct To Edit Page
+     Route::post('faculty/faculty_user/edit/{id}', [FacultyController::class, 'update']);
+     Route::get('faculty/faculty_user/list{id}', [FacultyController::class, 'remove']);
+
+
+     // user Teacher as a Admin
+
+    Route::get('faculty/teacher_user/list', [TeacherController::class, 'list']);
+    Route::get('faculty/teacher_user/add', [TeacherController::class, 'add']); //Direct To add Page
+    Route::post('faculty/teacher_user/add', [TeacherController::class, 'insert']);
+    Route::get('faculty/teacher_user/edit/{id}', [TeacherController::class, 'edit']); //Direct To Edit Page
+    Route::post('faculty/teacher_user/edit/{id}', [TeacherController::class, 'update']);
+    Route::get('faculty/teacher_user/list{id}', [TeacherController::class, 'remove']);
+
+
+
+
+
+
+
+
+
+
         // Subject
     Route::get('faculty/subject/list', [SubjectController::class, 'list']);
 

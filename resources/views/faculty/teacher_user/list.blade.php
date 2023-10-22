@@ -1,25 +1,21 @@
-
-
-
-
-
-
-
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shorcut icon" href="{{asset('assets/img/school-logo.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap5.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/notify.css')}}">
     <title>Masoli High School</title>
   </head>
   <body>
+  <x-notify::notify />
     <!-- top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-blue fixed-top">
       <div class="container-fluid">
@@ -46,13 +42,7 @@
         <div class="collapse navbar-collapse" id="topNavBar">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle ms-2"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span style="color:white;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
               <i class="fa-solid fa-user"></i>
               </a>
@@ -76,8 +66,8 @@
           <ul class="navbar-nav">
 
 
-                                   <!-- SIDE BAR MENU -->
-            <li>
+                        <!-- SIDE BAR MENU -->
+                        <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
                 <span>Dashboard</span></a>
@@ -164,53 +154,126 @@
         </nav>
       </div>
     </div>
-    <!-- offcanvas -->
+    <!-- Body Admin List Page -->
+
     <main class="mt-5 pt-5">
       <div class="container-fluid">
+          <div class="row">
+          
+            <div class="form-group col-md-3">
+              <a href="{{ url('faculty/teacher_user/add') }}" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Teacher</a>
+            </div>
+
+          
+   
+
+          </div>
+
+      <div class="container-fluid mt-2">
         <div class="row">
           <div class="col-md-12">
-            <h4>Add Subject</h4>
-                <div class="row">
-          <div class="col-md-12">
-            <!-- //Content of Admin List Page -->
-            <div class="card card-primary mt-3">
-              <div class="card-header bg-secondary">
-                <h6 class="card-title">Subject</h6>
+            <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Search Teacher</h6>
               </div>
-              <!-- form start for adding new admin -->
-              <form action="" method="post">
-                {{ csrf_field() }}
+              <form action="" method="get">
                 <div class="card-body">
-                <div class="form-group m-2">
-                    <label>Subject Name</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name">
-                    <span style="color:red; font-size:10px;">@error('name'){{ $message}} @enderror</span> 
-                </div>
-                <div class="form-group m-2">
-                    <label>Description</label>
-                    <input type="text" name="description"  class="form-control" placeholder="Description">
+
+                    <div class="row">
+
+                    <div class="form-group col-md-3">
+                      <label>Name</label>
+                      <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Name">
                     </div>
-                </div>
+
+                    <div class="form-group col-md-3">
+                      <label>Email address</label>
+                      <input type="email" name="email" value="{{ Request::get('email') }}" class="form-control" placeholder="Enter email">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                      <label>Date</label>
+                      <input type="date" name="date" value="{{ Request::get('date') }}" class="form-control">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                
+                      <button class="btn btn-primary" type="submit" style="margin-top:24px;">Search</button>
+                      <a href="{{ url('faculty/teacher_user/list')}}" class="btn btn-success" style="margin-top:24px;">Reset</a>
+                    </div>
+
+                  </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ url('faculty/subject/list') }}" class="btn btn-danger">Back</a>
                 </div>
-            </form>
+              </form>
             </div>
             <!-- end -->
+          </div>
         </div>
+      </div>
+
+        <!-- Admin Table List -->
+        <div class="container-fluid mt-2">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Teacher List</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Created Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($data['getTeacher'] as $value)
+                    <tr>
+                      <td>{{ $value->id }}</td>
+                      <td>{{ $value->name }}</td>
+                      <td>{{ $value->email }}</td>
+                      <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                      <td>
+                      <a href="#" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalView{{$value->id}}"><i class="fa-regular fa-eye p-1" style="color: #fafafa;"></i>View</a>
+                      <a href="{{ url('faculty/faculty_user/edit/'.$value->id) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square p-1" style="color: #fafafa;"></i>Edit</a>
+                      <a href="{{ url('faculty/faculty_user/list'.$value->id) }}" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can p-1" style="color: #fafafa;"></i>Delete</a>
+                      </td>    
+                    </tr>
+                    @include('/admin/teacher/viewmodal')
+                    @endforeach
+                  </tbody>
+                </table>
+
+                <!-- pagination -->
+                <div style="float:right;">
+                {!! $data['getTeacher']->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
+                </div>
+                <!-- End of pagination -->
+              </div>
+            </div>
+          </div>
         </div>
-            
-        </div>
-</div>
-</div>
+        
+      </div>
     </main>
+  
+
+
+
+
+
+
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
     <script src="{{asset('assets/js/jquery-3.5.1.js')}}"></script>
     <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>
     <script src="{{asset('assets/js/script.js')}}"></script>
+    @notifyJs
   </body>
 </html>
