@@ -185,6 +185,22 @@ class User extends Authenticatable
 
 
 //    Teacher Side Work
+
+
+static public function getStudentTeacher($studentID,$teacher_id){
+       $return = self::select('users.*', 'class.name as class_name', 'class.section as class_section')
+
+              ->join('class_subject',)
+           ->join('class', 'class.class_id', '=', 'users.class_id')
+           ->join('assign_class_teacher', 'assign_class_teacher.class_id', '=', 'class.class_id') /////
+           ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+           ->where('users.user_type', '=', 3)
+           // ->groupBy('student_profile.student_profile_id')
+           ->get();
+           
+
+       return $return;
+}
    
    static public function getTeacherStudent($teacher_id)
    {   

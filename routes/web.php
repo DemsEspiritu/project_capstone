@@ -114,6 +114,9 @@ use App\Http\Controllers\AssignClassTeacherController;
 
     Route::post('teacher/grades/list{id}', [TotalGradesController::class, 'add']);
 
+    Route::post('teacher/addrecord', [TotalGradesController::class, 'addStudentRecord']);
+    Route::post('teacher/addgrades', [TotalGradesController::class, 'addStudentGrades']);
+
 
 
     

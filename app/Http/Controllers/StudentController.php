@@ -21,6 +21,7 @@ class StudentController extends Controller
     public function list()
     {    
       $data['getStudent'] = User::getStudent();
+      
       return view('faculty.student_user.list',compact("data"));
          
     }
@@ -122,9 +123,9 @@ class StudentController extends Controller
     public function MyStudent()
     { 
 
-
+     
       $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
-
+      
      
       return view('teacher.my_student.list', $data);
     }
