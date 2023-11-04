@@ -58,6 +58,8 @@ class AssignClassTeacherController extends Controller
         {
             $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
 
+           // dd($data['getRecord']->toArray());
+
             return view('teacher.myclass_subject.list', $data);
         }
 

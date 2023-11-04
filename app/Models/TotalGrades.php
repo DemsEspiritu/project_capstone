@@ -9,6 +9,8 @@ class TotalGrades extends Model
 {
     use HasFactory;
 
+
+    protected $primaryKey = "tgs_id";
     protected $table = 'total_grades_sbujects';
 
     
