@@ -15,6 +15,7 @@ class RequestForm extends Model
 
     protected $primaryKey = 'form_id';
     
+
     
 
 
@@ -28,8 +29,10 @@ class RequestForm extends Model
 
     static public function getRecord()
     {
-        $return = RequestForm::select('form_request.*', 'users.name as requested_by_name')
+        $return = RequestForm::select('form_request.*', 'users.name as requested_by_name' ,'users.last_name as requested_by_last_name')
             ->join('users', 'users.id', 'form_request.request_by');
+            
+          
 
 
         $return = $return->orderBy('form_request.form_id', 'desc')

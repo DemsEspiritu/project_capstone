@@ -18,8 +18,9 @@ use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\CreateClassRoomController;
 use App\Http\Controllers\TotalGradesController;
-
-
+use App\Http\Controllers\AssignClassController;
+use App\Http\Controllers\ClassSubjectController; 
+use App\Http\Controllers\AssignClassTeacherController; 
 
 
 /*
@@ -105,9 +106,13 @@ use App\Http\Controllers\TotalGradesController;
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
     
 
+    Route::get('teacher/MyClassAndSubject/list', [AssignClassTeacherController::class, 'MyClassSubject']);
 
+    Route::get('teacher/MyStudent/list', [StudentController::class, 'MyStudent']);
 
+    Route::get('teacher/grades/list{id}', [TotalGradesController::class, 'student_list_grades']);
 
+    Route::post('teacher/grades/list{id}', [TotalGradesController::class, 'add']);
 
 
 
@@ -140,18 +145,15 @@ use App\Http\Controllers\TotalGradesController;
 
 
 
-//-------------------------------------------------Faculty Account Route-----------------------------------------//
+//-------------------------------------------------Faculty as Admin Account Route-----------------------------------------//
 
     Route::group(['middleware' => 'faculty'], function (){
 
+     // request Form
     Route::get('/faculty/dashboard', [DashboardController::class, 'dashboard']);
-
     Route::get('faculty/request/list', [RequestFormController::class, 'list']);
-
     Route::get('faculty/request/list{id}', [RequestFormController::class, 'remove']);
-
     Route::get('faculty/request/list/approved{form_id}', [RequestFormController::class, 'approved']);
-
     Route::get('faculty/request/list/decline{form_id}', [RequestFormController::class, 'decline']);
 
 
@@ -165,7 +167,7 @@ use App\Http\Controllers\TotalGradesController;
     Route::get('faculty/student_user/list{id}', [StudentController::class, 'remove']);
 
      // user faculty as a Admin
-
+     Route::get('faculty/create_schedule/index', [AssignClassController::class, 'show']);
      Route::get('faculty/faculty_user/list', [FacultyController::class, 'list']);
      Route::get('faculty/faculty_user/add', [FacultyController::class, 'add']); //Direct To add Page
      Route::post('faculty/faculty_user/add', [FacultyController::class, 'insert']);
@@ -184,67 +186,72 @@ use App\Http\Controllers\TotalGradesController;
     Route::get('faculty/teacher_user/list{id}', [TeacherController::class, 'remove']);
 
 
-
-
-
-
-
-
-
-
         // Subject
     Route::get('faculty/subject/list', [SubjectController::class, 'list']);
-
     Route::get('faculty/subject/list{id}', [SubjectController::class, 'remove']);
-
     Route::post('faculty/subject/list', [SubjectController::class, 'insert']);
-
     Route::get('faculty/subject/edit{subject_id}', [SubjectController::class, 'edit']);
-
     Route::post('faculty/subject/edit{subject_id}', [SubjectController::class, 'update']);
 
+     // Enroll
     Route::get('faculty/enroll/list', [EnrollController::class, 'list']);
-
-
+    Route::get('faculty/enroll/view{id}', [EnrollController::class, 'view']);
+    Route::post('faculty/enroll/view{id}', [EnrollController::class, 'update']);
+    Route::get('faculty/enroll/fileview{id}', [EnrollController::class, 'fileview']);
+    
     //School Year
-
     Route::get('faculty/school_year/list', [SchoolYearController::class, 'list']);
-
     Route::post('faculty/school_year/list', [SchoolYearController::class, 'insert']); //In the list page but can you add directly add 
-
     Route::get('faculty/school_year/list{school_year_id}', [SchoolYearController::class, 'remove']);
-
     Route::get('faculty/school_year/edit{school_year_id}', [SchoolYearController::class, 'edit']); // Direct to edit page
-
     Route::post('faculty/school_year/edit{school_year_id}', [SchoolYearController::class, 'update']); // Direct to edit page
 
     
 
     //Class
-    
     Route::get('faculty/class/list', [ClassController::class, 'list']);
-
     Route::post('faculty/class/list', [ClassController::class, 'insert']); //In the list page but can you add directly add 
-
     Route::get('faculty/class/list{class_id}', [ClassController::class, 'remove']);
-
     Route::get('faculty/class/edit{class_id}', [ClassController::class, 'edit']); // Direct to edit page
-
     Route::post('faculty/class/edit{class_id}', [ClassController::class, 'update']); // Direct to edit page
 
-     //Student List
 
+
+     //Student List
     Route::get('faculty/student/list', [StudentProfileController::class, 'list']);
     Route::get('faculty/student/search', [StudentProfileController::class, 'search']);
 
+
+
+
      //Accept Student Enrolles
     Route::get('faculty/enroll/accept{id}', [AcceptStudentCrontroller::class, 'accept']);
+
+
+
 
     //Create class or class room
     Route::get('faculty/create_class/list', [CreateClassRoomController::class, 'list']);
     Route::get('faculty/create_class/add',  [CreateClassRoomController::class, 'add']);
     Route::post('faculty/create_class/add', [CreateClassRoomController::class, 'insert']);
 
+
+
+    //Assign Subject to Class
+    Route::get('faculty/assign_subject_class/list', [ClassSubjectController::class, 'list']);
+    Route::get('faculty/assign_subject_class/add',  [ClassSubjectController::class, 'add']);
+    Route::post('faculty/assign_subject_class/add', [ClassSubjectController::class, 'insert']);
+    Route::get('faculty/assign_subject_class/remove{id}', [ClassSubjectController::class, 'remove']);
+    Route::get('faculty/assign_subject_class/edit{id}', [ClassSubjectController::class, 'edit']);
+
+    
+
+     //Assign Teacher to Class
+    Route::get('faculty/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
+    Route::get('faculty/assign_class_teacher/add',  [AssignClassTeacherController::class, 'add']);
+    Route::post('faculty/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
+    Route::get('faculty/assign_class_teacher/remove{id}', [AssignClassTeacherController::class, 'remove']);
+    Route::get('faculty/assign_class_teacher/edit{id}', [AssignClassTeacherController::class, 'edit']);
 
 
     

@@ -85,7 +85,7 @@
           <ul class="navbar-nav">
 
 
-                                <!-- SIDE BAR MENU -->
+            <!-- SIDE BAR MENU -->
             <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
@@ -106,6 +106,16 @@
             <a href="/faculty/class/list" class="nav-link px-3 pt-3">
                 <span class="me-2"><i class="fa-solid fa-school me-2"></i></span>
                 <span>Class</span></a>
+
+
+            <a href="/faculty/assign_subject_class/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-book-open-reader me-2"></i></span>
+                <span>Assign Subject Class</span></a>
+
+            <a href="/faculty/assign_class_teacher/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-chalkboard-user me-2"></i></span>
+                <span>Assign Teacher Class</span></a>
+
 
 
                 <!-- Student Concern -->

@@ -67,7 +67,7 @@
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark">
           <ul class="navbar-nav">
-                          <!-- SIDE BAR MENU -->
+            <!-- SIDE BAR MENU -->
             <li>
             <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
@@ -88,6 +88,16 @@
             <a href="/faculty/class/list" class="nav-link px-3 pt-3">
                 <span class="me-2"><i class="fa-solid fa-school me-2"></i></span>
                 <span>Class</span></a>
+
+
+            <a href="/faculty/assign_subject_class/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-book-open-reader me-2"></i></span>
+                <span>Assign Subject Class</span></a>
+
+            <a href="/faculty/assign_class_teacher/list" class="nav-link px-3 pt-3">
+                <span class="me-2"><i class="fa-solid fa-chalkboard-user me-2"></i></span>
+                <span>Assign Teacher Class</span></a>
+
 
 
                 <!-- Student Concern -->
@@ -172,7 +182,7 @@
                             <select class="form-select" name="class_id[]" value="">
                                 <option></option>
                                 @foreach($data ['getClass'] as $class)
-                                <option value="{{ $class->class_id }}">{{ $class->name }} {{ $class->section }}</option>
+                                <option value="{{ $class->class_id }}">{{ $class->name }} section {{ $class->section }}</option>
                                 @endforeach
                              </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 

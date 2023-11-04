@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Unique;
 use Symfony\Contracts\Service\Attribute\Required;
+use Auth;
 
 
 class StudentController extends Controller
@@ -111,6 +112,38 @@ class StudentController extends Controller
 
             notify()->success('Successfully Deleted!');
             return redirect('faculty/student_user/list');
+
+    }
+
+
+
+
+
+    public function MyStudent()
+    { 
+
+
+      $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
+
+     
+      return view('teacher.my_student.list', $data);
+    }
+
+    
+
+
+    public function grades_list($id)
+    {    
+
+      $data['getStudentProfile'] = User::getUser($id);
+      if(!empty($data['getStudentProfile']))
+      {
+        return view('faculty.grades.list_grades', compact('data'));
+      }
+      else
+      {
+           abort(404);
+      }
 
     }
 

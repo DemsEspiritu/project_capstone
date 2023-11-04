@@ -23,4 +23,16 @@ class SubjectModel extends Model
         $data = SubjectModel::all(); // Replace with your actual query to fetch data
         return view('faculty.subject.list', compact('data'));
     }
+
+    static public function getSubject()
+    {
+        $return = SubjectModel::select('subject.*')
+         ->orderBy('subject.name', 'desc')
+
+
+         ->get();
+
+         return $return;
+      
+    }
 }

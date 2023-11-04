@@ -34,6 +34,14 @@ class User extends Authenticatable
         'place_bdate',
         'user_type',
         'lrn',
+        'class_id',
+        'school_year_id',
+        'mother_name',
+        'father_name',
+        'mother_phone',
+        'father_phone',
+        'ext_name',
+        'file'
     ];
 
     /**
@@ -107,7 +115,7 @@ class User extends Authenticatable
 
                        
         $return = $return->orderBy('users.id','desc')
-                         ->paginate(5);
+                         ->paginate(10);
 
         return $return;
     }
@@ -168,15 +176,43 @@ class User extends Authenticatable
         return $return;
     }
 
-    static public function getSingle($id)
-    {
-        return User::find($id);
-    }
 
 
 
     public function profile() {
        return $this->hasOne(Profile::class);
    }
+
+
+//    Teacher Side Work
+   
+   static public function getTeacherStudent($teacher_id)
+   {   
+
+       $return = self::select('users.*', 'class.name as class_name', 'class.section as class_section')
+           ->join('class', 'class.class_id', '=', 'users.class_id')
+           ->join('assign_class_teacher', 'assign_class_teacher.class_id', '=', 'class.class_id') /////
+           ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+           ->where('users.user_type', '=', 3)
+           // ->groupBy('student_profile.student_profile_id')
+           ->get();
+           
+
+       return $return;
+
+   }
+
+  
+
+
+       static public function getSingle($id)
+    {   
+       
+        return User::find($id);
+    }
+
+ 
+
+   
  
 }

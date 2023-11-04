@@ -49,6 +49,16 @@ class ClassModel extends Model
             return $return;
     }
 
+    static public function getRecord()
+    {
+        $return = ClassModel::select('class.*')
+        ->join('users', 'users.id', 'class.created_by')
+         ->orderBy('class.name', 'desc')
+        ->get();
+
+        return $return;
+    }
+
 
 
 }

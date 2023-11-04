@@ -68,42 +68,40 @@
               </div>
               <!-- >
               <!-- form start -->
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="card-body">
 
               <div class="m-2">
                   <div class="row g-3">
+                  <h6>STUDENT INFORMATION</h6>
                   <div class="col-12">
-                          <label>LRN #</label>
+                      <label>LRN #</label>
                           <input type="text" name="lrn" class="form-control" placeholder="LRN number" value="{{old('lrn')}}">
                           <span style="color:red; font-size:10px;">@error('lrn'){{ $message}} @enderror</span> 
                       </div>
-                      <div class="col-3">
-                          <label>Name</label>
+                      <div class="col-6">
+                          <label>First Name</label>
                           <input type="text" name="name" class="form-control" placeholder="First Name" value="{{old('name')}}">
                           <span style="color:red; font-size:10px;">@error('name'){{ $message}} @enderror</span> 
                       </div>
-                      <div class="col-3">
+                      <div class="col-6">
                           <label>Last Name</label>
                           <input type="text" name="last_name" class="form-control" placeholder="Last Name" value="{{old('last_name')}}">
                           <span style="color:red; font-size:10px;">@error('last_name'){{ $message}} @enderror</span> 
                       </div>
-                      <div class="col-3">
+                      <div class="col-6">
                           <label>Middle Name</label>
                           <input type="text" name="middle_name" class="form-control" placeholder="Middle Name" value="{{old('middle_name')}}">
-                          <span style="color:red; font-size:10px;">@error('last_name'){{ $message}} @enderror</span> 
+                          <span style="color:red; font-size:10px;">@error('middle_name'){{ $message}} @enderror</span> 
                       </div>
 
-                      <div class="col-2">
-                          <label>Gender</label>
-                          <select class="form-select" name="gender" value="{{old('gender')}}">
-                              <option></option>
-                              <option value="M">Male</option>
-                              <option value="F">Female</option>
-                          </select>
-                          <span style="color:red; font-size:10px;">@error('sex'){{ $message}} @enderror</span> 
+                      <div class="col-6">
+                          <label>Extension Name</label>
+                          <input type="text" name="ext_name" class="form-control" placeholder="e.g. Jr., III (if applicable)" value="{{old('ext_name')}}">
+                          <span style="color:red; font-size:10px;">@error('ext_name'){{ $message}} @enderror</span> 
                       </div>
+
 
                       <div class="col-12">
                           <label>Address</label>
@@ -121,7 +119,7 @@
                       <div class="col-md-6">
                         <label>Phone Number</label>
                           <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" value="{{old('phone_number')}}">
-                          <span style="color:red; font-size:10px;">@error('phone'){{ $message}} @enderror</span> 
+                          <span style="color:red; font-size:10px;">@error('phone_number'){{ $message}} @enderror</span> 
                         </div>
                         <div class="col-md-6">
                           <label>Email</label>
@@ -140,24 +138,62 @@
                               <span style="color:red; font-size:10px;">@error('grade'){{ $message}} @enderror</span> 
                       </div>
                       <div class="col-6">
-                          <label>Type</label>
-                              <select class="form-select" name="user_type" placeholder="Select Type" value="{{old('user_type')}}">
-                              <option></option>
-                              <option value="3">Student</option>
-                              </select>
-                              <span style="color:red; font-size:10px;">@error('user_type'){{ $message}} @enderror</span> 
+                      <label>Birthdate</label>
+                              <input type="date" name="birthdate" class="form-control" placeholder="Birthdate" value="{{old('birthdate')}}">
+                              <span style="color:red; font-size:10px;">@error('birthdate'){{ $message}} @enderror</span> 
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-6">
                               <label>Age</label>
                               <input type="number" name="age" class="form-control" placeholder="Age" value="{{old('age')}}">
                               <span style="color:red; font-size:10px;">@error('age'){{ $message}} @enderror</span> 
                       </div>
 
-                      <div class="col-md-4">
-                              <label>Birthdate</label>
-                              <input type="date" name="birthdate" class="form-control" placeholder="Birthdate" value="{{old('birthdate')}}">
-                              <span style="color:red; font-size:10px;">@error('birthdate'){{ $message}} @enderror</span> 
+                      <div class="col-6">
+                          <label>Gender</label>
+                          <select class="form-select" name="gender" value="{{old('gender')}}">
+                              <option></option>
+                              <option value="M">Male</option>
+                              <option value="F">Female</option>
+                          </select>
+                          <span style="color:red; font-size:10px;">@error('gender'){{ $message}} @enderror</span> 
                       </div>
+
+                      <div class="col-6">
+                        <div><label>Attach your Grade</label></div>
+                      <label for="myfile">Select a file:</label>
+                          <input type="file" id="file" name="file">
+                          <span style="color:red; font-size:10px;">@error('file'){{ $message}} @enderror</span> 
+                       </div>
+
+                      <hr>
+                      <h6>PARENT'S/GUARDIAN'S INFORMATION</h6>
+
+                      <div class="col-md-6">
+                        <label>Father’s Name</label>
+                          <input type="text" name="father_name" class="form-control" placeholder="Father’s Name" value="{{old('father_name')}}">
+                          <span style="color:red; font-size:10px;">@error('father_name'){{ $message}} @enderror</span> 
+                        </div>
+
+                        <div class="col-md-6">
+                        <label>Contact Number</label>
+                          <input type="text" name="father_phone" class="form-control" placeholder="Contact Number" value="{{old('father_phone')}}">
+                          <span style="color:red; font-size:10px;">@error('father_phone'){{ $message}} @enderror</span> 
+                        </div>
+
+                      <div class="col-md-6">
+                        <label>Mother’s Maiden Name</label>
+                          <input type="text" name="mother_name" class="form-control" placeholder="Mother’s Maiden Name" value="{{old('mother_name')}}">
+                          <span style="color:red; font-size:10px;">@error('mother_name'){{ $message}} @enderror</span> 
+                        </div>
+
+                        <div class="col-md-6">
+                        <label>Contact Number</label>
+                          <input type="text" name="mother_phone" class="form-control" placeholder="Contact Number" value="{{old('mother_phone')}}">
+                          <span style="color:red; font-size:10px;">@error('mother_phone'){{ $message}} @enderror</span> 
+                        </div>
+
+                    
+
 
 
                   </div>

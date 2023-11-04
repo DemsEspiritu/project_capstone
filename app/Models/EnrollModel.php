@@ -23,4 +23,9 @@ class EnrollModel extends Model
     }
 
 
+    static public function getAlreadyFirst($class_id, $school_year_id)
+    {
+        return self::where('class_id', '=', '$class_id')->where('school_year_id', '=', $school_year_id)->first();
+    }
+
 }
