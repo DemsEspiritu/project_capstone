@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -392,8 +394,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Update</button>
-                  <a href="{{ url('faculty/enroll/list') }}" class="btn btn-danger">Cancel</a>
-                  <a href="{{ url('faculty/enroll/accept'.$enroll->id) }}" class="btn btn-success"><i class="fa-solid fa-check fa-2xs p-1"></i>Approved</a>
+                  <a href="{{ url('faculty/enroll/list') }}" class="btn btn-danger">Back</a>
                 </div>
               </form>
 

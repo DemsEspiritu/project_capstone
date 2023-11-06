@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -116,10 +118,10 @@
                             <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Class Name</th>
-                                <th scope="col">Class Section</th>
-                                <th scope="col">Subject Name</th>
-                                <th scope="col">Subject Type</th>
+                                <th class="text-center" scope="col">Class Name</th>
+                                <th class="text-center" scope="col">Class Section</th>
+                                <th class="text-center" scope="col">Subject Name</th>
+                                <th class="text-center" scope="col">Subject Type</th>
                           
                             </tr>
                         </thead>
@@ -127,10 +129,10 @@
                             @foreach($getRecord as $value)
                             <tr>
                     
-                                <td>{{ $value->class_name }}</td>
-                                <td>{{ $value->section_of_class }}</td>
-                                <td>{{ $value->subject_name }}</td>
-                                <td>{{ $value->subject_type }}</td>
+                                <td class="text-center">{{ $value->class_name }}</td>
+                                <td class="text-center">{{ $value->section_of_class }}</td>
+                                <td class="text-center">{{ $value->subject_name }}</td>
+                                <td class="text-center">{{ $value->subject_type }}</td>
                             </tr>
                             @endforeach
                         </tbody>

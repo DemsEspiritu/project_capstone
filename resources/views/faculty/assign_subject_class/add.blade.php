@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -85,7 +87,7 @@
                         ASSIGN
                     </li> 
 
- <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#assign" data-bs-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-pager pe-2"></i>
                             Assign 
@@ -147,14 +149,6 @@
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
-
 
                     <li class="sidebar-header">
                         USER ACCOUNT
@@ -252,7 +246,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Assign Teacher to Class</h5>
+                <h5 class="card-title"></h5>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -274,12 +268,12 @@
                     <br>
 
                     <div class="form-group m-1 d-flex ">
-                    <label style="margin-right:20px;">Subject Name</label>
+                    <label style="margin-right:20px; padding:20px">Subject Name</label>
 
                             @foreach($data['getSubject'] as $class)
                                     
                                 
-                                        <label style="font-weight: normal; margin:10px;">
+                                        <label style="font-weight: normal; margin:15px;">
                                             <input type="checkbox" value="{{$class->subject_id}}" name="subject_id[]">{{ $class->name }}
                                         </label>
                                     
@@ -289,13 +283,6 @@
 
                     </div>
                     <br>
-
-
-                  
-
-  
-
-
 
                     <div class="form-group m-2">
                      <label>Select School Year</label>
@@ -307,8 +294,6 @@
                             </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span>
                 </div>
-
-
             
                 <hr>
                 <!-- /.card-body -->
@@ -326,15 +311,7 @@
             </div>
           </div>
         </div>
-
-
-        </div>
-
-
-
-
-
-
+    </div>
 
             </div>
             </main>
@@ -346,27 +323,7 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

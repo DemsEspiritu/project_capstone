@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -264,7 +266,7 @@
             </form>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-6 p-3">
 
                             <table class="table table-striped">
                             <thead>

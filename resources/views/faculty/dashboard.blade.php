@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -85,7 +87,7 @@
                         ASSIGN
                     </li> 
 
- <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#assign" data-bs-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-pager pe-2"></i>
                             Assign 
@@ -147,14 +149,6 @@
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
-
 
                     <li class="sidebar-header">
                         USER ACCOUNT
@@ -221,36 +215,60 @@
 
             <!-- ========= Main content section of dashboard ======= -->
 
-            <main class="content px-3 py-2">
-
-                <div class="container-fluid"> <!--   this is form container fluid -->
-                    <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
-                    </div>
+            <main class=" pt-2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Dashboard</h4>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-dark h-100">
+              <div class="card-body py-5">
+                <h4>Teacher</h4>
+                <h1 class="total text-center">{{ $totalTeacher}} <i class="fa-solid fa-chalkboard-user"></i></h1>
+                </div>
+              <div class="card-footer d-flex">
+             
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body py-5">
+                <h4>Admin</h4>
+                <h1 class="total text-center">{{ $totalFaculty}} <i class="fa-solid fa-people-line "></i></h1>
+              </div>
+              <div class="card-footer d-flex">
                 
-                    <div class="row"><!--   this is form row fluid -->
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-9">
-                                        
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body py-5">
+                <h4>Student</h4>
+                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-users"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
            
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--   this is form row fluid -->
-           
-
-
-
-
-
-
-            </main>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
 
@@ -259,27 +277,7 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

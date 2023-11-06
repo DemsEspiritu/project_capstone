@@ -35,4 +35,22 @@ class SubjectModel extends Model
          return $return;
       
     }
+
+    static public function getSingle($subject_id)
+    {   
+       
+        return SubjectModel::find($subject_id);
+    }
+
+    // static public function MySubject($class_id)
+    // {
+    //     return self::select('class_subject.*', 'class.name as class_name','subject.subject_id as subject_id', 'subject.name as subject_name' , 'subject.description as subject_type'  ,'class.section as section_of_class')
+    //             ->join('class', 'class.class_id', '=', 'class_subject.class_id')
+    //             ->join('users', 'users.class_id', '=', 'class_subject.class_id')
+    //             ->where('users.class_id', '=' , $class_id)
+    //             ->get();
+
+    // }
+
+   
 }

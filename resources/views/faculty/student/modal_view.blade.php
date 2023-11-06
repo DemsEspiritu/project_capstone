@@ -62,8 +62,27 @@
                             <div class="col-5">
                                   <label style="font-weight: bold;">Grade: {{$student->grade}}</label><p></p>
                             </div>
-                      
-                                  
+
+                            <hr>
+                            <h6>Parents Information</h6>
+                        
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Mother Name: {{$student->mother_name}}</label><p></p>
+                            </div>
+                            
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Phone: {{$student->mother_phone}}</label><p></p>
+                            </div>
+
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Father Name: {{$student->father_name}}</label><p></p>
+                            </div>
+
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Phone: {{$student->father_phone}}</label><p></p>
+                            </div>
+
+                            
 
                 
                            </div>

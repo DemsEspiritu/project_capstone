@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -148,14 +150,6 @@
                          </a>   
                     </li> 
 
-
-
-
-
-
-
-
-
                     <li class="sidebar-header">
                         USER ACCOUNT
                     </li> 
@@ -243,7 +237,7 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
-                    <form action="" method="post">
+                <form action="" method="post">
                 {{ csrf_field() }}
 
 
@@ -260,10 +254,10 @@
             </form>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-6">
 
-                            <table class="table table-striped">
-                            <thead>
+                <table class="table m-2 table-striped">
+                    <thead>
                     <tr>
                       <th  class="text-center">School Year</th>
                     </tr>
@@ -280,16 +274,6 @@
                     @endforeach
                   </tbody>
                 </table>
-
-
-
-
-
-
-
-
-
-
             </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
@@ -299,27 +283,6 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

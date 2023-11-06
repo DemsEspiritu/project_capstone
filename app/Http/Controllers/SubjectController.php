@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
 use Symfony\Contracts\Service\Attribute\Required;
+use Auth;
 
 use App\Models\SubjectModel;
 
@@ -82,15 +83,25 @@ class SubjectController extends Controller
           'name.unique' => 'this subject has already created.'
       ]);
 
-         $user = SubjectModel::getSubject($subject_id);
-         $user->name = trim($request->name);
-         $user->description = trim($request->description);
-         $user->save();
+         $data = SubjectModel::getSingle($subject_id);
+         $data->name = trim($request->name);
+         $data->description = trim($request->description);
+         $data->save();
 
          notify()->success('Subject Successfully Updated!');
-
          return redirect('faculty/subject/list');
     }
 
 
+
+    // student side my subject list
+
+    // public function MyClassSubject()
+    // {
+    //     $data['getRecord'] = SubjectModel::MySubject(Auth::user()->id);
+
+    //    // dd($data['getRecord']->toArray());
+
+    //     return view('student.subject.list', $data);
+    // }
 }

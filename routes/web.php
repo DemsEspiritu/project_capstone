@@ -139,8 +139,9 @@ use App\Http\Controllers\AssignClassTeacherController;
     //----------------Student Request Route------------------//
     Route::get('student/request/myrequest/remove{id}', [RequestFormController::class, 'remove_student_side']);
     
+    Route::get('student/grades/mygrades', [TotalGradesController::class, 'MyGrades']);
 
-    
+    Route::get('student/subject/list', [StudentController::class, 'MySubject']);
     
 
 });

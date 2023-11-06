@@ -39,6 +39,7 @@ class TotalGradesController extends Controller
         $totalGrades->passed_failed = $total >= 75 ? "PASSED" : "FAILED";
         $totalGrades->save();
       }
+      notify()->success('Grade Successfully save!');
       return redirect()->back();
     }
    
@@ -127,5 +128,15 @@ class TotalGradesController extends Controller
           ];
           DB::table('total_grades_sbujects')->insert($datasave);
         }
+    }
+
+
+    public function MyGrades()
+    {
+        $data['getRecord'] = TotalGrades::getMyGrades(Auth::user()->id);
+
+       // dd($data['getRecord']->toArray());
+
+        return view('student.grade.list', $data);
     }
 }

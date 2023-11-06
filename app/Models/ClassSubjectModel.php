@@ -70,5 +70,20 @@ class ClassSubjectModel extends Model
     }
 
 
+
+
+    /////
+
+    static public function MySubject($id)
+    {
+        return self::select('class_subject.*','subject.subject_id as subject_id', 'subject.name as subject_name' , 'subject.description as subject_type')
+                ->join('subject', 'subject.subject_id', '=', 'class_subject.subject_id')
+                ->join('users','users.class_id', '=', 'class_subject.class_id')
+                ->where('class_subject.class_id', '=' , $id)
+                ->get();
+
+    }
+
+
  
 }

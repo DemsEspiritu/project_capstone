@@ -27,10 +27,12 @@
             <!-- ======== Content For Sidebar ========-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">Masoli High School</a>
+                    <a href="">Masoli High School</a>
                 </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                     <!-- SIDEBAR ITEM -->
@@ -113,16 +115,13 @@
                             </button>
                         </div>
                         <hr>
-                        <span>Name: {{$data['getStudentProfile']->name}} {{$data['getStudentProfile']->last_name}} {{$data['getStudentProfile']->middle_name}}.</span>
+                        <span class="bold" >Name: {{$data['getStudentProfile']->name}} {{$data['getStudentProfile']->last_name}} {{$data['getStudentProfile']->middle_name}}.</span>
                         <br>
-                        <span>LRN: {{$data['getStudentProfile']->lrn}}</span>
+                        <span class="bold" >LRN: {{$data['getStudentProfile']->lrn}}</span>
                         <br>
                         <span>Class: {{$data['getStudentProfile']->class_name}}</span>
                         <br>
                         <span>Section: {{$data['getStudentProfile']->class_section}}</span>
-
-
-
 
                         <hr>
                     </div>
@@ -145,17 +144,17 @@
                                 <tbody>
                                  @foreach($grades as $grade)
                                         <tr>
-                                                <td class="text-center">{{$grade->name}}</td>
-                                                <input
+                                            <td class="text-center">{{$grade->name}}</td>
+                                             <input
                                                     name="ids[]"
                                                     value="{{$grade->tgs_id}}"
                                                     hidden
                                                 />
-                                                <td class="text-center"><input type="text" class="form-control grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="first_grading[]" value="{{$grade->first_grading}}"></td>
-                                                <td class="text-center"><input type="text"  class="form-control grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="second_grading[]"value="{{$grade->second_grading}}"></td>
-                                                <td class="text-center"><input type="text" class="form-control grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="third_grading[]"value="{{$grade->third_grading}}"></td>
-                                                <td class="text-center"><input type="text" class="form-control grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="fourth_grading[]"value="{{$grade->fourth_grading}}"></td>
-                                                <td class="text-center"><input type="text" class="form-control" id="grade{{$grade->tgs_id}}" value="{{$grade->final_grades}}" readonly></td>
+                                                <td class="text-center"><input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="first_grading[]" value="{{$grade->first_grading}}"></td>
+                                                <td class="text-center"><input type="text"  class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="second_grading[]"value="{{$grade->second_grading}}"></td>
+                                                <td class="text-center"><input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="third_grading[]"value="{{$grade->third_grading}}"></td>
+                                                <td class="text-center"><input type="text" class="form-control text-center grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="fourth_grading[]"value="{{$grade->fourth_grading}}"></td>
+                                                <td class="text-center"><input type="text" class="form-control text-center" id="grade{{$grade->tgs_id}}" value="{{$grade->final_grades}}" readonly></td>
                                                 <td class="text-center" id="passFailed{{$grade->tgs_id}}">{{$grade->passed_failed}}</td>
                                         </tr>
                                  @endforeach
@@ -166,13 +165,6 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 
-
-
-
-
-
-
-
             </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
@@ -182,27 +174,7 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-            <!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
 

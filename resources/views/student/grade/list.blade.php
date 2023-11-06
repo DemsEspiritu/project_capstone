@@ -39,7 +39,7 @@
                       
 
                         <li class="sidebar-header">
-                        STUDENT SIDEBAR
+                                 STUDENT SIDEBAR
                     </li>
 
                     <li class="sidebar-item">
@@ -103,65 +103,66 @@
 
             <main class="content px-3 py-2">
 
-                <div class="container-fluid"> <!--   this is form container fluid -->
-                    <div class="mb-3">
-                        <h4>Request Documents</h4>
-                        <a href="{{ url('/student/request/add') }}" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add Request</a>
-                    </div>
-                
-                    <div class="row"><!--   this is form row fluid -->
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-9">
-                                        
-           
+<div class="container-fluid"> <!--   this is form container fluid -->
+    <div class="mb-3">
+        <h4>My Grade</h4>
+    </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="row"><!--   this is form row fluid -->
+        <div class="col-12 col-md-6 d-flex">
+            <div class="card flex-fill border-0 illustration">
+                <div class="card-body p-0 d-flex flex-fill">
+                    <div class="row g-0 w-100">
+                        <div class="col-9">
+                        
+
+
                         </div>
-                    </div><!--   this is form row fluid -->
-                  
-                </div> <!--   this is form container fluid -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--   this is form row fluid -->
+    
+<div class="container-fluid">
 
-                <div class="container-fluid">
+            <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="text-center" scope="col">Subject</th>
+                <th class="text-center" scope="col">First Grading</th>
+                <th class="text-center" scope="col">Second Grading</th>
+                <th class="text-center" scope="col">Third Grading</th>
+                <th class="text-center" scope="col">Fourth Grading</th>
+                <th class="text-center" scope="col">Final</th>
+                <th class="text-center" scope="col">Pass or Failed</th>
+          
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($getRecord as $value)
+            <tr>
+    
+                <td class="text-center">{{ $value->subject_name  }}</td>
+                <td class="text-center">{{ $value->first_grading  }}</td>
+                <td class="text-center">{{ $value->second_grading }}</td>
+                <td class="text-center">{{ $value->third_grading }}</td>
+                <td class="text-center">{{ $value->fourth_grading }}</td>
+                <td class="text-center">{{ $value->final_grades }}</td>
+                <td class="text-center">{{ $value->passed_failed }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+</table>
 
-                            <table class="table table-striped">
-                            <thead>
-                    <tr>
-                        <th  class="text-center">Type</th>
-                        <th  class="text-center">Submit Date</th>
-                        <th  class="text-center">Action</th>
-                        <th  class="text-center">Status</th>              
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($val as $ownRec)
-                    <tr>
-                      <td  class="text-center">{{ $ownRec->type }}</td>
-                      <td  class="text-center">{{ date('d-m-Y H:i A', strtotime($ownRec->created_at)) }}</td>
-                      <td  class="text-center">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square p-1" style="color: #fafafa;"></i>Edit</a>
-                        <a href="{{ url('student/request/myrequest/remove'.$ownRec->form_id) }}" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can p-1" style="color: #fafafa;"></i>Delete</a>
-                      </td>
-                            <!-- status field -->
-                      <td  class="text-center">{{ $ownRec->status }}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              
+    
 
 
 
 
 
 
-            </main>
-
+</main>
             <!-- ========= light and dark mode toggle button ======= -->
 
             <a href="#" class="theme-toggle">

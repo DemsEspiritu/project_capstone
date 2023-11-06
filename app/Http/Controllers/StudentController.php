@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Unique;
 use Symfony\Contracts\Service\Attribute\Required;
 use Auth;
+use App\Models\ClassSubjectModel;
+use App\Models\TotalGrades;
+
 
 
 class StudentController extends Controller
@@ -147,6 +150,24 @@ class StudentController extends Controller
       }
 
     }
+ /////////////////////
 
-   
+          
+          // public function MySubject()
+          // {
+          //      $data['getRecord'] = ClassSubjectModel::MySubject(Auth::user()->id);
+
+          // // dd($data['getRecord']->toArray());
+
+          //      return view('student.subject.list', $data);
+          // }
+
+          public function MySubject()
+          {
+              $data['getRecord'] = TotalGrades::getMyGrades(Auth::user()->id);
+      
+             // dd($data['getRecord']->toArray());
+      
+              return view('student.subject.list', $data);
+          }
 }
