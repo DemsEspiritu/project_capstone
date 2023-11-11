@@ -21,8 +21,8 @@ use App\Http\Controllers\TotalGradesController;
 use App\Http\Controllers\AssignClassController;
 use App\Http\Controllers\ClassSubjectController; 
 use App\Http\Controllers\AssignClassTeacherController; 
-
-
+use App\Http\Controllers\UserController; 
+use App\Http\Controllers\GradesSetDateController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -106,7 +106,7 @@ use App\Http\Controllers\AssignClassTeacherController;
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
     
 
-    Route::get('teacher/MyClassAndSubject/list', [AssignClassTeacherController::class, 'MyClassSubject']);
+    Route::get('teacher/MyClassAndSubject/list', [ClassSubjectController::class, 'MyClassSubject']);
 
     Route::get('teacher/MyStudent/list', [StudentController::class, 'MyStudent']);
 
@@ -141,8 +141,11 @@ use App\Http\Controllers\AssignClassTeacherController;
     
     Route::get('student/grades/mygrades', [TotalGradesController::class, 'MyGrades']);
 
-    Route::get('student/subject/list', [StudentController::class, 'MySubject']);
+    Route::get('student/subject/list', [ClassSubjectController::class, 'MySubject']);
+
+    Route::get('student/account', [UserController::class, 'MyAccount']);
     
+    Route::post('student/account', [UserController::class, 'Update']);
 
 });
 
@@ -222,8 +225,8 @@ use App\Http\Controllers\AssignClassTeacherController;
 
 
      //Student List
-    Route::get('faculty/student/list', [StudentProfileController::class, 'list']);
-    Route::get('faculty/student/search', [StudentProfileController::class, 'search']);
+    Route::get('faculty/student/list', [StudentController::class, 'liststudent']);
+
 
 
 
@@ -243,19 +246,19 @@ use App\Http\Controllers\AssignClassTeacherController;
 
     //Assign Subject to Class
     Route::get('faculty/assign_subject_class/list', [ClassSubjectController::class, 'list']);
-    Route::get('faculty/assign_subject_class/add',  [ClassSubjectController::class, 'add']);
-    Route::post('faculty/assign_subject_class/add', [ClassSubjectController::class, 'insert']);
+    Route::get('faculty/assign_subject_class/add',  [ClassSubjectController::class, 'add']); //add
+    Route::post('faculty/assign_subject_class/add', [ClassSubjectController::class, 'AddClassSubjectAndTeacher']);
     Route::get('faculty/assign_subject_class/remove{id}', [ClassSubjectController::class, 'remove']);
     Route::get('faculty/assign_subject_class/edit{id}', [ClassSubjectController::class, 'edit']);
 
     
 
-     //Assign Teacher to Class
-    Route::get('faculty/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
-    Route::get('faculty/assign_class_teacher/add',  [AssignClassTeacherController::class, 'add']);
-    Route::post('faculty/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
-    Route::get('faculty/assign_class_teacher/remove{id}', [AssignClassTeacherController::class, 'remove']);
-    Route::get('faculty/assign_class_teacher/edit{id}', [AssignClassTeacherController::class, 'edit']);
+     //Set Date to Start Grading
+    Route::get('faculty/Setdate/list', [GradesSetDateController::class, 'list']);
+    Route::get('faculty/Setdate/add',  [GradesSetDateController::class, 'add']);
+    Route::post('faculty/Setdate/add', [GradesSetDateController::class, 'insert']);
+    Route::get('faculty/Setdate/remove{id}', [GradesSetDateController::class, 'remove']);
+    Route::get('faculty/Setdate/edit{id}', [GradesSetDateController::class, 'edit']);
 
 
     

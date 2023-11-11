@@ -135,6 +135,17 @@ a.sidebar-link{
 
 
 
+.subject-style{
+background-color: #56565c;
+border: 1px solid #ccc; /* Optional styling for each item */
+border-radius: 20%;
+padding: 5px; /* Optional padding for each item */
+margin: 1px;
+margin: 1px;
+color: #FFF;
+}
+
+
 
 
 /* Sidebar Toggle */

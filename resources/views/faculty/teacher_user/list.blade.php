@@ -49,7 +49,6 @@
                          </a>   
                     </li>
 
-
                         <!-- start pages dropdown -->
                     <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
@@ -87,7 +86,7 @@
                         ASSIGN
                     </li> 
 
- <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#assign" data-bs-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-pager pe-2"></i>
                             Assign 
@@ -103,12 +102,6 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,12 +129,6 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -149,14 +136,6 @@
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
-
 
                     <li class="sidebar-header">
                         USER ACCOUNT
@@ -185,13 +164,7 @@
                         </ul>
 
                     </li>
-                    <!-- end pages dropdown -->
-
-                          
-
                 </ul>
-                <!-- EEND UL -->
-
             </div>
         </aside>
 
@@ -245,8 +218,10 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
+
+                    <div class="mt-3">
                     <form action="" method="get">
-                <div class="card-body">
+                     <div class="card-body">
 
                     <div class="row">
 
@@ -273,16 +248,16 @@
 
                   </div>
                 <!-- /.card-body -->
-                </div>
-              </form>
+                      </div>
+                     </form>
+                    </div>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-4">
 
                             <table class="table table-striped">
                             <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
                       <th>Name</th>
                       <th>Email</th>
                       <th>Created Date</th>
@@ -291,7 +266,6 @@
                   <tbody>
                     @foreach($data['getTeacher'] as $value)
                     <tr>
-                      <td>{{ $value->id }}</td>
                       <td>{{ $value->name }}</td>
                       <td>{{ $value->email }}</td>
                       <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>

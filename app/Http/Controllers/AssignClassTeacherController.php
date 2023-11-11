@@ -54,14 +54,14 @@ class AssignClassTeacherController extends Controller
         //  TEACHER SIDE WORK
 
 
-        public function MyClassSubject()
-        {
-            $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
+        // public function MyClassSubject()
+        // {
+        //     $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
 
-           // dd($data['getRecord']->toArray());
+        //    // dd($data['getRecord']->toArray());
 
-            return view('teacher.myclass_subject.list', $data);
-        }
+        //     return view('teacher.myclass_subject.list', $data);
+        // }
 
        
 }

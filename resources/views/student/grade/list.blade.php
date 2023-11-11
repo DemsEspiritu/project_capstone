@@ -67,6 +67,15 @@
                         </a>   
                     </li> 
 
+
+                    <li class="sidebar-item">
+                    <a href="/student/account" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-user pe-2"></i>
+                            My Account
+                        </a>   
+                    </li> 
+
                 </ul>
                 <!-- EEND UL -->
 

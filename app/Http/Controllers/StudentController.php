@@ -123,15 +123,6 @@ class StudentController extends Controller
 
 
 
-    public function MyStudent()
-    { 
-
-     
-      $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
-      
-     
-      return view('teacher.my_student.list', $data);
-    }
 
     
 
@@ -170,4 +161,25 @@ class StudentController extends Controller
       
               return view('student.subject.list', $data);
           }
+
+
+          public function liststudent()
+          {    
+            $data['getStudentProfile'] = User::getAllStudent();
+      
+            return view('faculty.student.list',compact("data"));
+               
+          }
+
+          ///teacher side my student list
+          
+               public function MyStudent()
+               { 
+
+                    
+                    $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
+                    
+                    
+                    return view('teacher.my_student.list', $data);
+               }
 }

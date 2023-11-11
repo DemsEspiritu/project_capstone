@@ -103,12 +103,6 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,12 +130,7 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
+
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -242,20 +231,47 @@
 
                     <div class="row">
 
-                    <div class="form-group col-md-3">
-                      <label>Class Name</label>
-                      <input type="text" name="class_name" value="{{ Request::get('class_name') }}" class="form-control" placeholder="Class Name">
+                    <div class="form-group col-md-2">
+                      <label>Class</label>
+                      <select class="form-select" name="class_name" >
+                            <option value="{{ Request::get('class_name') }}">Class</option>
+                              
+                                <option value="Grade 7">Grade 7</option>
+                                <option value="Grade 8">Grade 8</option>
+                                <option value="Grade 9">Grade 9</option>
+                                <option value="Grade 10">Grade 10</option>                       
+                        </select>
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
+                      <label>Section</label>
+                      <select class="form-select" name="class_section" >
+                            <option value="{{ Request::get('class_section') }}">Section</option>
+                              
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
                       <label>Subject</label>
                       <input type="text" name="subject_name" value="{{ Request::get('subject_name') }}" class="form-control" placeholder="Subject Name">
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
+                      <label>Teacher</label>
+                      <input type="text" name="teacher_name" value="{{ Request::get('teacher_name') }}" class="form-control" placeholder="Teacher Name">
+                    </div>
+
+
+                    <div class="form-group col-md-1">
                       <label>Scchool Year</label>
                       <select class="form-select" name="school_year_name" >
-                            <option value="">Select School Year</option>
+                            <option value="{{ Request::get('year_name') }}">Year</option>
                               
                                 <option value="2022-2023">2022-2023</option>
                                 <option value="2023-2024">2023-2024</option>
@@ -263,7 +279,7 @@
                                 <option value="2025-2026">2025-2026</option>
                                 <option value="2026-2027">2026-2027</option>
                         
-                             </select>
+                        </select>
                     </div>
 
                     <div class="form-group col-md-3">
@@ -278,27 +294,28 @@
               </form>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid m-3">
+                <div class="container-fluid mt-5">
 
-                            <table class="table table-striped">
-                            <thead>
+                    <table class="table table-striped">
+                        <thead>
                     <tr>
-                    
                       <th class="text-center">Class Name</th>
                       <th class="text-center">Section</th>
                       <th class="text-center">Subject</th>
+                      <th class="text-center">Teacher</th>
                       <th class="text-center">School Year</th>
                       <th class="text-center">Created By</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($data['getRecord'] as $value)
-                    <tr>
+                      @foreach($classes as $value)  
+                    <tr> 
+                    
                       <td class="text-center">{{ $value->class_name}}</td>
                       <td class="text-center">{{ $value->section_of_class}}</td>
                       <td class="text-center">{{ $value->subject_name}}</td>
+                      <td class="text-center">{{ $value->teacher_name}}</td>
                       <td class="text-center">{{ $value->school_year_name}}</td>
-                      <td class="text-center">{{ $value->created_by_name}}</td>
                       <td class="text-center">
                         <a href="{{ url('faculty/assign_subject_class/edit'.$value->id ) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square p-1" style="color: #fafafa;"></i>Edit</a>
                         <a href="{{ url('faculty/assign_subject_class/remove'.$value->id ) }}" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can p-1" style="color: #fafafa;"></i>Delete</a>
@@ -310,20 +327,10 @@
 
                <!-- pagination -->
                <div style="float:right;">
-                {!! $data['getRecord']->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
+                {!! $classes->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
                 </div>
                 <!-- End of pagination -->
                 </div>
-
-
-
-
-
-
-
-
-
-
 
             </main>
 
@@ -333,28 +340,6 @@
                 <i class="fa-regular fa-moon"></i>
                 <i class="fa-regular fa-sun"></i>
             </a>
-
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

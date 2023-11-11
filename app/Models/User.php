@@ -207,8 +207,8 @@ static public function getStudentTeacher($studentID,$teacher_id){
 
        $return = self::select('users.*', 'class.name as class_name', 'class.section as class_section')
            ->join('class', 'class.class_id', '=', 'users.class_id')
-           ->join('assign_class_teacher', 'assign_class_teacher.class_id', '=', 'class.class_id') /////
-           ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+           ->join('class_subject', 'class_subject.class_id', '=', 'users.class_id') /////
+           ->where('class_subject.teacher_id', '=', $teacher_id)
            ->where('users.user_type', '=', 3)
            // ->groupBy('student_profile.student_profile_id')
            ->get();
@@ -227,7 +227,39 @@ static public function getStudentTeacher($studentID,$teacher_id){
         return User::find($id);
     }
 
- 
+
+
+    ///ADMIN SIDE GET ALL STUDENT LIST
+
+    static public function getAllStudent(){
+       $return = User::select('users.*', 'class.name as class_name', 'class.section as class_section')
+       ->join('class', 'class.class_id', '=', 'users.class_id')
+       ->join('school_year', 'school_year.school_year_id', '=', 'users.school_year_id')
+       ->where('users.user_type', '=', 3);
+
+       if(!empty(Request::get('lrn')))
+       {
+              $return = $return->where('lrn','like','%'.Request::get('lrn').'%');
+       }
+
+       if(!empty(Request::get('name')))
+       {      
+              
+              $return = $return->where('users.name','like','%'.Request::get('name').'%');
+       }
+
+                           
+       $return = $return->orderBy('users.id','desc')
+       ->paginate(10);
+
+       
+      
+           // ->groupBy('student_profile.student_profile_id')
+
+           
+
+       return $return;
+}
 
    
  

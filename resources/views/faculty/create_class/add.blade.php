@@ -94,9 +94,7 @@
                 <span class="me-2"><i class="fa-solid fa-book-open-reader me-2"></i></span>
                 <span>Assign Subject Class</span></a>
 
-            <a href="/faculty/assign_class_teacher/list" class="nav-link px-3 pt-3">
-                <span class="me-2"><i class="fa-solid fa-chalkboard-user me-2"></i></span>
-                <span>Assign Teacher Class</span></a>
+         
 
 
 

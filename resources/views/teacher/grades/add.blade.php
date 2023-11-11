@@ -117,10 +117,7 @@
                             <br>
                             <span>LRN:  {{$data['getStudentProfile']->lrn}}</span>  
                             <br>
-                            <span>Class:  {{$data['getStudentProfile']->class_name}}</span>  
-                            <br>
-                            <span>Section:  {{$data['getStudentProfile']->class_section}}</span> 
-
+                        
                             
 
                 

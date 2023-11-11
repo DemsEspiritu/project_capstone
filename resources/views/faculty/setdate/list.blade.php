@@ -87,7 +87,7 @@
                         ASSIGN
                     </li> 
 
- <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#assign" data-bs-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-pager pe-2"></i>
                             Assign 
@@ -150,14 +150,6 @@
                          </a>   
                     </li> 
 
-
-
-
-
-
-
-
-
                     <li class="sidebar-header">
                         USER ACCOUNT
                     </li> 
@@ -207,7 +199,7 @@
                         <li class="nav-item dropdown ">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                             <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
-                <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
+                              <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="{{ url('logout') }}" class="dropdown-item">LogOut</a>
@@ -227,9 +219,9 @@
 
                 <div class="container-fluid"> <!--   this is form container fluid -->
                     <div class="mb-3">
-                        <h4>Assign Class Teacher</h4>
+                        <h4>Set Date To Grading</h4>
                     </div>
-                    <!-- <a href="{{ url('faculty/assign_class_teacher/add') }}" style="margin:20px;" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Assign Class Teacher</a> -->
+                    <a href="{{ url('faculty/Setdate/add') }}" style="margin:20px;" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Set Date To Grading</a>
                     <div class="row"><!--   this is form row fluid -->
                         <div class="col-12 col-md-6 d-flex">
                             <div class="card flex-fill border-0 illustration">
@@ -245,83 +237,27 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
-                   
+                    <form action="" method="get">
+                <div class="card-body m-3">
 
-                    <div class="row">
-          <div class="col-md-12">
+                     </form>
+                </div> <!--   this is form container fluid -->
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title">Assign Teacher to Class</h5>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <form action="" method="post">
-                {{ csrf_field() }}
-                <div class="card-body">
-                 
-
-                  <div class="form-group m-2">
-                        <label>Class Name</label>
-                            <select class="form-select" name="class_id" >
-                            <option value="">Select Class </option>
-                                @foreach($data ['getRecord'] as $class)
-                                <option value="{{ $class->class_id }}">{{ $class->name }} Section-{{ $class->section }}</option>
-                                @endforeach
-                             </select>
-                    <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
-                    </div>
-                    <br>
-
-                    <!-- slect teacher -->
-                    
-                  <div class="form-group m-2">
-                        <label>Select Teacher</label>
-                            <select class="form-select" name="teacher_id" >
-                            <option value="">Select Teacher </option>
-                                @foreach($data['getTeacher'] as $class)
-                                <option value="{{ $class->id }}">{{ $class->name }} {{ $class->last_name }}</option>
-                                @endforeach
-                             </select>
-                    <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
-                    </div>
-
-                    <br>
-
-                    <div class="form-group m-2">
-                     <label>Select School Year</label>
-                            <select class="form-select" name="school_year_id">
-                            <option value="">Select School Year </option>
-                                @foreach($data ['getSchoolYearForAssign'] as $class)
-                                <option value="{{ $class->school_year_id }}">{{ $class->year_name }}</option>
-                                @endforeach
-                            </select>
-                    <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span>
+                <div class="container-fluid">
+                            <table class="table table-striped">
+                            <thead>
+                    <tr>
+                      <th class="text-center">Start Date</th>
+                      <th class="text-center">End Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                       
+                  </tbody>
+                                </table>
                 </div>
 
 
-            
-                <hr>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{ url('faculty/assign_class_teacher/list') }}" class="btn btn-danger">Cancel</a>
-                  
-                </div>
-              </form>
-
-                <!-- pagination -->
-                
-                <!-- End of pagination -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        </div>
 
 
 
@@ -329,7 +265,8 @@
 
 
 
-            </div>
+
+
             </main>
 
             <!-- ========= light and dark mode toggle button ======= -->

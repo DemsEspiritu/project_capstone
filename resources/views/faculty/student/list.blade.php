@@ -101,15 +101,7 @@
                                Assign Subject Class
                          </a>   
                     </li>
-
-
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
-                            
+ 
                         </ul>
 
                     </li>
@@ -136,26 +128,12 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
-
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
                             <i class="fa-solid fa-school pe-2"></i>
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
 
 
                     <li class="sidebar-header">
@@ -258,18 +236,18 @@
                       <label>Name</label>
                       <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Name">
                     </div>
-
+<!-- 
                     <div class="form-group col-md-3">
                       <label>Grade</label>
-                      <select class="form-select" name="grade" placeholder="Select Grade" value="{{ Request::get('grade') }}">
-                              <option></option>
-                              <option value=7>7</option>
-                              <option value=8>8</option>
-                              <option value=9>9</option>
-                              <option value=10>10</option>
+                      <select class="form-select" name="class_name" placeholder="Select Grade" value="{{ Request::get('class.class_name') }}">
+                              <option>---Select Class---</option>
+                              <option value=Grade 7>7</option>
+                              <option value=Grade 8>8</option>
+                              <option value=Grade 9>9</option>
+                              <option value=Grade 10>10</option>
                           </select>
 
-                    </div>
+                    </div> -->
 
                 
                     <div class="form-group col-md-3">
@@ -291,8 +269,8 @@
                     <tr>
                       <th class="text-center">LRN</th>
                       <th class="text-center">Name</th>
-                      <th  class="text-center">Grade</th>
-                      <th class="text-center">Email</th>
+                      <th  class="text-center">Class</th>
+                      <th class="text-center">Section</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -301,10 +279,10 @@
                     <tr>
                       <td class="text-center">{{$student->lrn}}</td>
                       <td class="text-center">{{$student->last_name}} {{$student->name}}   {{$student->middle_name}}.</td>
-                      <td class="text-center">{{$student->grade}}</td>
-                      <td class="text-center">{{$student->email}}</td>
+                      <td class="text-center">{{$student->class_name}}</td>
+                      <td class="text-center">{{$student->class_section}}</td>
                       <td class="text-center"> 
-                      <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#ModalEdit{{$student->student_profile_id}}"><i class="fa-regular fa-eye p-1" style="color: #fafafa;"></i>View</a>
+                      <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#ModalEdit{{$student->id}}"><i class="fa-regular fa-eye p-1" style="color: #fafafa;"></i>View</a>
                       </td>
                     </tr>
                     @include('faculty/student/modal_view')

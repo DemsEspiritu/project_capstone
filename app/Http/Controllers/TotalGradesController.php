@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\GradesHandlingSetDate;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\StudentProfile;
 use App\Models\TotalGrades;
 use App\Models\AssignClassTeacherModel;
 use App\Models\User;
+use App\Models\ClassSubjectModel;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -42,6 +45,7 @@ class TotalGradesController extends Controller
       notify()->success('Grade Successfully save!');
       return redirect()->back();
     }
+    
    
     public function addStudentRecord(Request $request){
       
@@ -81,22 +85,13 @@ class TotalGradesController extends Controller
     {    
 
       $data['getStudentProfile'] = User::getSingle($id);
-      
-      
 
-
-//      dd($data['getStudentProfile']->toArray());
-
-      $subjects = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id)->toArray();
-     
-
+      $subjects = ClassSubjectModel::getMyClassSubject(Auth::user()->id)->toArray();
       $grades = DB::table('total_grades_sbujects')->join('subject', 'total_grades_sbujects.subject_id', '=', 'subject.subject_id')->where('users_id', $data['getStudentProfile']->id)->where('school_year_id',$data['getStudentProfile']->school_year_id)->get()->toArray();
-      
-    
-      
-      
+      //tryyy 
 
-     
+
+   
 
       if(!empty($data['getStudentProfile']))
       {
@@ -108,6 +103,10 @@ class TotalGradesController extends Controller
       }
 
     }
+
+
+
+
 
     public function add(Request $request, $id) {
 

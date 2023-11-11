@@ -95,12 +95,6 @@
 
                         <ul id="assign" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
 
-                             <li class="sidebar-item">
-                        <a href="/faculty/assign_subject_class/list" class="sidebar-link">
-                            <i class="fa-solid fa-book-open-reader pe-2"></i>
-                               Assign Subject Class
-                         </a>   
-                    </li>
 
 
                     <li class="sidebar-item">
@@ -135,13 +129,6 @@
                     <li class="sidebar-header">
                         RECORD
                     </li>
-
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">

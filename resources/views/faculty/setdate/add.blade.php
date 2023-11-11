@@ -227,9 +227,9 @@
 
                 <div class="container-fluid"> <!--   this is form container fluid -->
                     <div class="mb-3">
-                        <h4>Assign Class Teacher</h4>
+                        <h4>Set Date to Start Grading</h4>
                     </div>
-                    <a href="{{ url('faculty/assign_class_teacher/add') }}" style="margin:20px;" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Assign Class Teacher</a>
+                    <!-- <a href="{{ url('faculty/assign_class_teacher/add') }}" style="margin:20px;" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Assign Class Teacher</a> -->
                     <div class="row"><!--   this is form row fluid -->
                         <div class="col-12 col-md-6 d-flex">
                             <div class="card flex-fill border-0 illustration">
@@ -245,77 +245,56 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
-                    <form action="" method="get">
-                <div class="card-body m-3">
+                   
 
                     <div class="row">
+          <div class="col-md-12">
 
-                    <div class="form-group col-md-3">
-                      <label></label>
-                      <input type="text" name="class_name" value="{{ Request::get('class_name') }}" class="form-control" placeholder="Class Name">
-                    </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Set Date to Start Grading</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <form action="" method="post">
+                {{ csrf_field() }}
+                <div class="card-body">
+                 
 
-                    <div class="form-group col-md-3">
-                      <label></label>
-                      <input type="text" name="teacher_name" value="{{ Request::get('teacher_name') }}" class="form-control" placeholder="Teacher Name">
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Start Date</label>
+                    <input type="date" class="form-control" name="start_date" value="{{ old('start_date') }}"  placeholder="Enter email">
+                </div>
+                    <br>
 
-                    <div class="form-group col-md-3">
-                      <label></label>
-                      <select class="form-select" name="school_year_name" >
-                            <option value="">Select School Year</option>
-                              
-                                <option value="2022-2023">2022-2023</option>
-                                <option value="2023-2024">2023-2024</option>
-                                <option value="2024-2025">2024-2025</option>
-                                <option value="2025-2026">2025-2026</option>
-                                <option value="2026-2027">2026-2027</option>
-                        
-                             </select>
-                    </div>
+                    <!-- slect teacher -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">End Date</label>
+                    <input type="date" class="form-control" name="end_date"  value="{{ old('end_date') }}""  placeholder="Enter email">
+                </div>
 
-                    <div class="form-group col-md-3">
-                
-                      <button class="btn btn-primary" type="submit" style="margin-top:24px;">Search</button>
-                      <a href="{{ url('faculty/assign_class_teacher/list')}}" class="btn btn-success" style="margin-top:24px;">Reset</a>
-                    </div>
-
-                  </div>
+                    <br>
+                <hr>
                 <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{ url('faculty/assign_class_teacher/list') }}" class="btn btn-danger">Cancel</a>
+                  
                 </div>
               </form>
-                </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <!-- pagination -->
+                
+                <!-- End of pagination -->
+              </div>
+            </div>
+          </div>
+        </div>
 
-                            <table class="table table-striped">
-                            <thead>
-                    <tr>
-                    
-                      <th class="text-center">Class Name</th>
-                      <th class="text-center">Class Section</th>
-                      <th class="text-center">Teacher Name</th>
-                      <th class="text-center">School Year</th>
-                      <th class="text-center">Created By</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                         @foreach($data['getRecord'] as $value)
-                    <tr>
-                      <td class="text-center">{{ $value->class_name}}</td>
-                      <td class="text-center">{{ $value->section_of_class}}</td>
-                      <td class="text-center">{{ $value-> teacher_name}}</td>
-                      <td class="text-center">{{ $value->school_year_name}}</td>
-                      <td class="text-center">{{ $value->created_by_name}}</td>
-                      <td class="text-center">
-                        <a href="" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square p-1" style="color: #fafafa;"></i>Edit</a>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can p-1" style="color: #fafafa;"></i>Delete</a>
-                      </td>    
-                    </tr>
-                      @endforeach
-                  </tbody>
-                                </table>
-                </div>
+
+        </div>
 
 
 
@@ -323,10 +302,7 @@
 
 
 
-
-
-
-
+            </div>
             </main>
 
             <!-- ========= light and dark mode toggle button ======= -->

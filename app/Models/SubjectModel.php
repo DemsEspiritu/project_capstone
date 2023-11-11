@@ -16,9 +16,6 @@ class SubjectModel extends Model
     protected $primaryKey = 'subject_id';
     
 
-
-
-
     public function showData() {
         $data = SubjectModel::all(); // Replace with your actual query to fetch data
         return view('faculty.subject.list', compact('data'));
@@ -51,6 +48,11 @@ class SubjectModel extends Model
     //             ->get();
 
     // }
+
+   public function classes()
+    {
+        return $this->belongsToMany(ClassModel::class, 'class_subject', 'subject_id', 'class_id');
+    }
 
    
 }

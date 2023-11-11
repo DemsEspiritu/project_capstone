@@ -102,13 +102,6 @@
                          </a>   
                     </li>
 
-
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,27 +129,12 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
-
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
                             <i class="fa-solid fa-school pe-2"></i>
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
-
 
                     <li class="sidebar-header">
                         USER ACCOUNT

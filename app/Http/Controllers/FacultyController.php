@@ -86,7 +86,7 @@ class FacultyController extends Controller
                 $user->password = Hash::make($request->password);
            }
            $user->save();
-           notify()->success('Faculty Successfully Updated!');
+           notify()->success('Admin Successfully Updated!');
            return redirect('faculty/faculty_user/list');
       }
  

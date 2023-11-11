@@ -59,6 +59,19 @@ class ClassModel extends Model
         return $return;
     }
 
+    //tryyy
+
+    // public function subjects()
+    // {
+    //     return $this->hasMany(SubjectModel::class);
+    // }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(SubjectModel::class, 'class_subject', 'class_id', 'subject_id',);
+    }
+
+
 
 
 }

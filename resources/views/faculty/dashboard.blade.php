@@ -103,12 +103,6 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,12 +130,7 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
+
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -196,10 +185,12 @@
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
+                    <span style="margin:15px;"><a href="#"><i class="fa-regular fa-bell fa-2xl"></i></a></span>
                         <li class="nav-item dropdown ">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                            <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
-                <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
+                            
+                              <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
+                              <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="{{ url('logout') }}" class="dropdown-item">LogOut</a>
@@ -255,7 +246,7 @@
             <div class="card bg-danger text-white h-100">
               <div class="card-body py-5">
                 <h4>Student</h4>
-                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-users"></i></h1>
+                <h1 class="total text-center">{{$totalStudent}} <i class="fa-solid fa-users"></i></h1>
               </div>
               <div class="card-footer d-flex">
            

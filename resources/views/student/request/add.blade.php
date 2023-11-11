@@ -66,6 +66,14 @@
                             My Subject
                         </a>   
                     </li> 
+
+                    <li class="sidebar-item">
+                    <a href="/student/account" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-user pe-2"></i>
+                            My Account
+                        </a>   
+                    </li> 
                 </ul>
                 <!-- EEND UL -->
 
@@ -126,7 +134,7 @@
                   
                 </div> <!--   this is form container fluid -->
 
-                <form action="" method="post" >
+            <form action="" method="post" >
               {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">
@@ -140,15 +148,6 @@
                           </select>
                     </div>
 
-                    <div class="form-group col-md-3">
-                    <label>Input Number to Recieve Confirmation</label>
-                            <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" value="{{old('phone_number')}}">
-                          <span style="color:red; font-size:10px;">@error('phone'){{ $message}} @enderror</span> 
-                    </div>
-
-
-
-                
                     <div class="form-group col-md-3">
                 
                       <button class="btn btn-primary" type="submit" style="margin-top:24px;">Submit</button>

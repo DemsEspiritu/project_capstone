@@ -67,6 +67,14 @@
                         </a>   
                     </li> 
 
+                    <li class="sidebar-item">
+                    <a href="/student/account" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-user pe-2"></i>
+                            My Account
+                        </a>   
+                    </li> 
+
                 </ul>
                 <!-- EEND UL -->
 
@@ -130,20 +138,22 @@
             <thead>
             <tr>
                 <th class="text-center" scope="col">Subject</th>
-                <th class="text-center" scope="col">Type</th>
+                <th class="text-center" scope="col">Teacher</th>
+                <th class="text-center" scope="col">School Year</th>
           
           
             </tr>
         </thead>
         <tbody>
-            @foreach($getRecord as $value)
+      
+            @foreach($subjects as $value)
             <tr>
-    
                 <td class="text-center">{{ $value->subject_name}}</td>
-                <td class="text-center">{{ $value->subject_type}}</td>
-
+                <td class="text-center">{{ $value->teacher_name}}</td>
+                <td class="text-center">{{ $value->year_name}}</td>
             </tr>
             @endforeach
+     
         </tbody>
 </table>
 

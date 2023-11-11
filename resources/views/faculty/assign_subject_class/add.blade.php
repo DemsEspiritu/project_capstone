@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/try.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/notify.css')}}">
 
+
     <title>Masoli High School</title>
 </head>
 
@@ -101,14 +102,6 @@
                                Assign Subject Class
                          </a>   
                     </li>
-
-
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,12 +129,6 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -258,44 +245,78 @@
                   <div class="form-group m-2">
                         <label>Class Name</label>
                             <select class="form-select" name="class_id" >
-                            <option value="">--Select Class--</option>
+                            <option value="">Select Class</option>
                                 @foreach($data ['getRecord'] as $class)
-                                <option value="{{ $class->class_id }}">{{ $class->name }}          Section-{{ $class->section }}</option>
+                                <option value="{{ $class->class_id }}">{{ $class->name }} Section-{{ $class->section }}</option>
                                 @endforeach
                              </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
                     </div>
                     <br>
 
-                    <div class="form-group m-1 d-flex ">
-                    <label style="margin-right:20px; padding:20px">Subject Name</label>
-
-                            @foreach($data['getSubject'] as $class)
-                                    
-                                
-                                        <label style="font-weight: normal; margin:15px;">
-                                            <input type="checkbox" value="{{$class->subject_id}}" name="subject_id[]">{{ $class->name }}
-                                        </label>
-                                    
-                                    @endforeach     
+                    <table class="table table-bordered" id="table-body">
+                    
+                    <tr>
+                        <th>Subject</th>
+                        <th>Teacher</th>
+                    
+                    </tr>
+                    <tr>
+                
+                        <td>         
+                            <select class="form-control" name="subject_id[]" >
+                                <option value="">Select Subject</option>
+                                @foreach($data['getSubject'] as $class)
+                                    <option value="{{ $class->subject_id }}">{{ $class->name }}</option>
+                                    @endforeach
+                                </select>
                             <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
+                        </td>
 
 
+                        <td>          
+                            <select class="form-control" name="teacher_id[]" >
+                                <option value="">Select Teacher</option>
+                                @foreach($data['getTeacher']  as $class)
+                                    <option value="{{ $class->id }}">{{ $class->name }} {{ $class->last_name }}</option>
+                                    @endforeach
+                                </select>
+                            <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
+                        </td>
+
+                   
+
+                        <!-- <button type="button" id="addRow" class="btn btn-primary">Add</button> -->
+                        
+                       
+
+                    </tr>
+                    </table>
+                    <div>
+                        <button type="button" id="addRow" class="btn btn-primary">Add</button>
                     </div>
-                    <br>
+
+
 
                     <div class="form-group m-2">
-                     <label>Select School Year</label>
-                            <select class="form-select" name="school_year_id">
-                            <option value="">--Select School Year--</option>
-                                @foreach($data ['getSchoolYearForAssign'] as $class)
+                        <label>Class Name</label>
+                            <select class="form-select" name="school_year_id" >
+                            <option value="">Select School Year</option>
+                                @foreach($data['getSchoolYearForAssign'] as $class)
                                 <option value="{{ $class->school_year_id }}">{{ $class->year_name }}</option>
                                 @endforeach
-                            </select>
-                    <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span>
-                </div>
+                             </select>
+                    <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
+                    </div>
+
+                    
+                   
+
+                    <br>
+
+                
             
-                <hr>
+             
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -323,15 +344,48 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
+          
+
 
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-
     @notifyJs
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('assets/js/try.js')}}"></script>
-   
     <script src="{{asset('assets/js/script.js')}}"></script>
-</body>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            // Add a new row when the "Add" button is clicked
+            $(".add-row").click(function () {
+                var lastRow = $("#data-table tr:last");
+                var newRow = lastRow.clone();
+                newRow.find('select').val(''); // Clear the selected values
+                lastRow.after(newRow);
+            });
+        });
+    </script> -->
+
+    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            document.getElementById('addRow').addEventListener('click', function () {
+                                // Clone the last row
+                                const lastRow = document.getElementById('table-body').lastElementChild.cloneNode(true);
+                                
+                                // Reset the select inputs in the new row
+                                lastRow.querySelectorAll('select').forEach(select => {
+                                    select.selectedIndex = 0;
+                                });
+
+                                // Append the new row to the table
+                                document.getElementById('table-body').appendChild(lastRow);
+                            });
+                        });
+                    </script>
+
+ 
+    
+
+</body>
 </html>

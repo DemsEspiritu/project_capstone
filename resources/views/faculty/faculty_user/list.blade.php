@@ -102,13 +102,6 @@
                          </a>   
                     </li>
 
-
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -136,27 +129,12 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
-
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
                             <i class="fa-solid fa-school pe-2"></i>
                                Student List
                          </a>   
                     </li> 
-
-
-
-
-
-
-
-
 
                     <li class="sidebar-header">
                         USER ACCOUNT
@@ -245,8 +223,10 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
+
+                <div class="mt-3">
                     <form action="" method="get">
-                <div class="card-body">
+                    <div class="card-body">
 
                     <div class="row">
 
@@ -272,17 +252,16 @@
                     </div>
 
                   </div>
-                <!-- /.card-body -->
                 </div>
-              </form>
-                </div> <!--   this is form container fluid -->
+                <!-- /.card-body -->
+            </div>
+        </form>
+    </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
-
-                            <table class="table table-striped">
-                            <thead>
+                <div class="container-fluid mt-3">
+                 <table class="table table-striped">
+                    <thead>
                     <tr>
-                    
                       <th>Name</th>
                       <th>Email</th>
                       <th>Created Date</th>
@@ -291,7 +270,6 @@
                   <tbody>
                     @foreach($data['getFaculty'] as $value)
                     <tr>
-                   
                       <td>{{ $value->name }}</td>
                       <td>{{ $value->email }}</td>
                       <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
@@ -310,17 +288,6 @@
                 <div style="float:right;">
                 {!! $data['getFaculty']->appends(Illuminate\Support\Facades\Request::except('page'))->links()!!}
                 </div>
-
-
-
-
-
-
-
-
-
-
-
             </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
@@ -330,27 +297,6 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

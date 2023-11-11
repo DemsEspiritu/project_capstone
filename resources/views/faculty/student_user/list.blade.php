@@ -102,14 +102,7 @@
                          </a>   
                     </li>
 
-
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
-                            
+       
                         </ul>
 
                     </li>
@@ -136,12 +129,6 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -207,10 +194,10 @@
                         <li class="nav-item dropdown ">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                             <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
-                <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
+                                    <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="{{ url('logout') }}" class="dropdown-item">LogOut</a>
+                                <a href="{{ url('logout') }}" class="dropdown-item">Logout</a>
                             </div>
 
                         </li>
@@ -229,7 +216,7 @@
                     <div class="mb-3">
                         <h4>Student List</h4>
                     </div>
-                    <a href="{{ url('faculty/student_user/add') }}" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Student</a>
+                    <!-- <a href="{{ url('faculty/student_user/add') }}" class="btn btn-primary"><i class="fa-solid fa-plus  p-1" style="color: #ffffff;"></i>Add New Student</a> -->
                     <div class="row"><!--   this is form row fluid -->
                         <div class="col-12 col-md-6 d-flex">
                             <div class="card flex-fill border-0 illustration">
@@ -245,8 +232,9 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
+                    <div class="mt-3">
                     <form action="" method="get">
-                <div class="card-body">
+                     <div class="card-body">
 
                     <div class="row">
 
@@ -274,10 +262,11 @@
                   </div>
                 <!-- /.card-body -->
                 </div>
-              </form>
+                      </form>
+                </div>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-3">
 
                             <table class="table table-striped">
                             <thead>

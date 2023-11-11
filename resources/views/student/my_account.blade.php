@@ -113,7 +113,7 @@
 
                 <div class="container-fluid"> <!--   this is form container fluid -->
                     <div class="mb-3">
-                        <h4>Student Dashboard</h4>
+                        <h4>My Account</h4>
                     </div>
                 
                     <div class="row"><!--   this is form row fluid -->
@@ -132,6 +132,107 @@
                         </div>
                     </div><!--   this is form row fluid -->
            
+             <form action=" " method="post" >
+              {{ csrf_field() }}
+                <div class="card-body">
+                    <div class="row">
+        
+
+
+                    <div class="parents mt-3 mb-3">
+                        <h5>Student Information</h5>
+                    </div>
+        
+                    <div class="form-group col-md-5">
+                    <label>First Name</label>
+                        <input type="text" name="name" class="form-control"  value="{{old('name',$getRecord->name)}}">
+                          <span style="color:red; font-size:10px;">@error('name'){{ $message}} @enderror</span> 
+                    </div>
+
+                    
+                    <div class="form-group col-md-5">
+                    <label>Last Name</label>
+                        <input type="text" name="last_name" class="form-control"  value="{{ old ('last_name', $getRecord->last_name) }}">
+                          <span style="color:red; font-size:10px;">@error('last_name'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Middle Name</label>
+                        <input type="text" name="middle_name" class="form-control"  value="{{ old ('middle_name', $getRecord->middle_name) }}">
+                          <span style="color:red; font-size:10px;">@error('middle_name'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Email</label>
+                        <input type="text" name="email" class="form-control"  value="{{ old ('email', $getRecord->email) }}">
+                          <span style="color:red; font-size:10px;">@error('email'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Phone</label>
+                        <input type="text" name="phone_number" class="form-control"  value="{{ old ('phone_number', $getRecord->phone_number) }}">
+                          <span style="color:red; font-size:10px;">@error('phone_number'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Address</label>
+                        <input type="text" name="address" class="form-control"  value="{{ old ('address', $getRecord->address) }}">
+                          <span style="color:red; font-size:10px;">@error('address'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="parents mt-3 mb-3">
+                        <h5>Parents Information</h5>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Father Name</label>
+                        <input type="text" name="father_name" class="form-control"  value="{{ old ('father_name', $getRecord->father_name) }}">
+                          <span style="color:red; font-size:10px;">@error('father_name'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Phone</label>
+                        <input type="text" name="father_phone" class="form-control"  value="{{ old ('father_phone', $getRecord->father_phone) }}">
+                          <span style="color:red; font-size:10px;">@error('father_phone'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Mother Name</label>
+                        <input type="text" name="mother_name" class="form-control"  value="{{ old ('mother_name', $getRecord->mother_name) }}">
+                          <span style="color:red; font-size:10px;">@error('mother_name'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="form-group col-md-5">
+                    <label>Phone</label>
+                        <input type="text" name="father_phone" class="form-control"  value="{{ old ('father_phone', $getRecord->father_phone) }}">
+                          <span style="color:red; font-size:10px;">@error('father_phone'){{ $message}} @enderror</span> 
+                    </div>
+
+                    <div class="parents mt-3 mb-2">
+                        <h5>Password</h5>
+                    </div>
+
+
+                    <div class="form-group col-md-5">
+                    <label>Password</label>
+                     <input type="text" name="password"  class="form-control" placeholder="Password">
+                        <p>Do you want to change password. Please Add new Password</p>
+                  </div>
+                    <hr>
+
+
+
+                
+                    <div class="form-group col-md-3">
+                
+                      <button class="btn btn-primary" type="submit" style="margin-top:24px;">Update</button>
+                    
+                    </div>
+
+                <!-- /.card-body -->
+                </div>
+              </form>
+            </div>
 
 
 
@@ -146,8 +247,6 @@
                 <i class="fa-regular fa-moon"></i>
                 <i class="fa-regular fa-sun"></i>
             </a>
-
-
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

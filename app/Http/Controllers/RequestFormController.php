@@ -49,11 +49,10 @@ class RequestFormController extends Controller
             $save->request_by = Auth::user()->id;
             $save->status= 'In Progress';
             $save->type = $request->type;
-            $save->phone_number = trim($request->phone_number);
+            $save->phone_number = Auth::user()->phone_number;
             $save->save();
 
          
-
             return redirect('student/request/myrequest')->with('succes', "Request Successfully Sent!");
         }
 
@@ -71,7 +70,7 @@ class RequestFormController extends Controller
         public function approved($form_id, Request $request)
         {
             $data = RequestForm::find($form_id);
-            $data->status = 'Approve';
+            $data->status = 'File Release';
             $data->phone_number;
             $data->save();
 

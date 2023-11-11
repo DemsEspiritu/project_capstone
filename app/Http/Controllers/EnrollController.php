@@ -154,7 +154,8 @@ class EnrollController extends Controller
          notify()->success('Update Form Success!');
          
    
-         return redirect('faculty/enroll/list');
+         
+         return redirect()->back();
     }
 
 

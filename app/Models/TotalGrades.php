@@ -32,7 +32,7 @@ class TotalGrades extends Model
 
     static public function getMyGrades($users_id)
     {
-        return self::select('total_grades_sbujects.*','subject.subject_id as subject_id', 'subject.name as subject_name' , 'subject.description as subject_type')
+        return self::select('total_grades_sbujects.*','subject.subject_id as subject_id', 'subject.name as subject_name' , 'subject.description as subject_type',)
                 ->join('subject', 'subject.subject_id', '=', 'total_grades_sbujects.subject_id')
                 ->where('total_grades_sbujects.users_id', '=' , $users_id)
                 ->get();
