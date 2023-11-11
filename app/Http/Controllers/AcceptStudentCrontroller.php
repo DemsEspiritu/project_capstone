@@ -48,29 +48,6 @@ class AcceptStudentCrontroller extends Controller
 
             ]);
 
-            StudentProfile::create([
-
-                // Assign other attributes as needed
-                'name' => $sourceData->name,
-                'last_name' => $sourceData->last_name,
-                'middle_name' => $sourceData->middle_name,
-                'email' => $sourceData->email,
-                'birthdate' => $sourceData->birthdate,
-                'address' => $sourceData->address,
-                'grade' => $sourceData->grade,
-                'age' => $sourceData->age,
-                'gender' => $sourceData->gender,
-                'phone_number' => $sourceData->phone_number,
-                'lrn' => $sourceData->lrn, 
-                'class_id' => $sourceData->class_id,
-                'school_year_id' => $sourceData->school_year_id,
-                'mother_name' => $sourceData->mother_name,
-                'father_name' => $sourceData->father_name,
-                'mother_phone' => $sourceData->mother_phone,
-                'father_phone' => $sourceData->father_phone,
-                'ext_name' => $sourceData->ext_name,
-            ]);
-
 
 
 
