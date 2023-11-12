@@ -150,10 +150,35 @@
                                                     value="{{$grade->tgs_id}}"
                                                     hidden
                                                 />
-                                                <td class="text-center"><input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="first_grading[]" value="{{$grade->first_grading}}"></td>
-                                                <td class="text-center"><input type="text"  class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="second_grading[]"value="{{$grade->second_grading}}"></td>
-                                                <td class="text-center"><input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="third_grading[]"value="{{$grade->third_grading}}"></td>
-                                                <td class="text-center"><input type="text" class="form-control text-center grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="fourth_grading[]"value="{{$grade->fourth_grading}}"></td>
+                                                <td class="text-center">
+                                                    <input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="first_grading[]" value="{{$grade->first_grading}}"
+                                                        
+                                                        @if(!str_contains($gradingFilter, 'first'))
+                                                            disabled
+                                                        @endif
+                                                    >
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="text"  class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="second_grading[]"value="{{$grade->second_grading}}"
+                                                        @if(!str_contains($gradingFilter, 'second'))
+                                                            disabled
+                                                        @endif
+                                                    >
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="text" class="form-control text-center  grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="third_grading[]"value="{{$grade->third_grading}}"
+                                                        @if(!str_contains($gradingFilter, 'third'))
+                                                            disabled
+                                                        @endif
+                                                    >
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="text" class="form-control text-center grade{{$grade->tgs_id}}" onchange="computeForGrades({{$grade->tgs_id}})" name="fourth_grading[]"value="{{$grade->fourth_grading}}"
+                                                        @if(!str_contains($gradingFilter, 'fourth'))
+                                                            disabled
+                                                        @endif
+                                                    >
+                                                </td>
                                                 <td class="text-center"><input type="text" class="form-control text-center" id="grade{{$grade->tgs_id}}" value="{{$grade->final_grades}}" readonly></td>
                                                 <td class="text-center" id="passFailed{{$grade->tgs_id}}">{{$grade->passed_failed}}</td>
                                         </tr>
