@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="/faculty/dashboard" class="sidebar-link">
+                        <a href="/faculty/dashboard?schoolYear=2022-2024" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                                Dashboard
                          </a>   
@@ -258,6 +258,116 @@
           </div>
         </div>
         <hr>
+        <div class="container-fluid">
+          <h1>Grading:</h1>
+         <form action="{{url('faculty/setgrading')}}" method="POST">
+          
+          @csrf
+          <div class="rows mb-5">
+            <label class="mr-2">School Year:<label>
+            <select name="school_year"
+              onchange="setQuery(this)"
+            >
+            @foreach($sy as $schoolYear)
+              <option value="{{$schoolYear->school_year_id}}"
+                @if(request()->get('schoolYear')==$schoolYear->year_name)
+                  selected
+                @endif
+              >{{$schoolYear->year_name}}</option>
+            @endforeach
+            </select>
+          </div>
+         <div class="cols mb-5">
+            <label>First Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="firstgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[0][0]!=null)
+                value="{{$newData[0][0]}}"
+              @endif
+            />
+            <label>To:</label>
+            <input name="firstgrading[]" type="date"
+            class="form-control"
+            @if( !empty($newData) && $newData[0][1]!=null)
+             value="{{$newData[0][1]}}"
+            @endif
+            />
+          </div>
+            
+            
+          </div>
+          <div  class="col mb-5">
+          <label>Second Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="secondgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[1][1]!=null)
+             value="{{$newData[1][1]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="secondgrading[]" type="date"
+            class="form-control"
+            @if(!empty($newData) && $newData[1][1]!=null)
+             value="{{$newData[1][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+          <div  class="col mb-5">
+          <label>Third Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="thirdgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[2][1]!=null)
+             value="{{$newData[2][1]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="thirdgrading[]" type="date"
+            class="form-control"     
+            @if(!empty($newData) && $newData[2][1]!=null)
+             value="{{$newData[2][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+          <div  class="col mb*-5">
+          <label>Fourth Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="fourthgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[3][1]!=null)
+             value="{{$newData[3][1]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="fourthgrading[]" type="date"
+            class="form-control"
+            @if(!empty($newData) && $newData[3][1]!=null)
+             value="{{$newData[3][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+            <button class="form-control">
+              Submit
+            </button>
+         </form>
+        </div>
       </div>
     </main>
 
@@ -277,6 +387,14 @@
     <script src="{{asset('assets/js/try.js')}}"></script>
    
     <script src="{{asset('assets/js/script.js')}}"></script>
+    <script>
+
+      function setQuery(elem){
+        
+        document.location.href=document.location.href.replace(/=[A-Za-z0-9]+-[A-Za-z0-9]+/,`=${elem.options[elem.selectedIndex].text}`);
+         
+      }
+    </script>
 </body>
 
 </html>

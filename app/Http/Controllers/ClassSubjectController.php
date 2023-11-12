@@ -22,8 +22,8 @@ class ClassSubjectController extends Controller
     }
 
     public function AddClassSubjectAndTeacher(Request $request){
-        // dd($request->all());
-        $req = $request->all();
+         
+            $req = $request->all();
         
             for ($i=0; $i < count($req['subject_id']); $i++) { 
               $totalGrades = new ClassSubjectModel;
@@ -32,8 +32,11 @@ class ClassSubjectController extends Controller
               $totalGrades->school_year_id = $req['school_year_id'];
               $totalGrades->teacher_id = $req['teacher_id'][$i];
               $totalGrades->created_by = Auth::user()->id;
+              $totalGrades->fromTime=$req['from'];
+              $totalGrades->toTime=$req['to'];
+              $totalGrades->schedule=implode("/", $req['schedule']);
               $totalGrades->save();
-
+            
             }
 
             notify()->success('Assign Subject Successfully Create!');
@@ -57,7 +60,7 @@ class ClassSubjectController extends Controller
         $data['getSubject'] = SubjectModel::getSubject();
         $data['getSchoolYearForAssign'] = SchoolYearModel::all();
         $data['getTeacher'] = User::getTeacher();
-
+       
         return view('faculty.assign_subject_class.add', compact('data'));
     }
 
@@ -80,12 +83,18 @@ class ClassSubjectController extends Controller
         if(!empty($getRecords))
         {
         $data['getRecords'] = $getRecords;
+
+        
         $data['getAssignSubjectId'] = ClassSubjectModel::getAssignSubjectId($getRecords->class_id);
         $data['getRecord'] = ClassModel::getRecord();
+        
         $data['getSubject'] = SubjectModel::getSubject();
         $data['getSchoolYearForAssign'] = SchoolYearModel::all();
+            
+
         
-        return view('faculty.assign_subject_class.edit', $data );
+        
+        return view('faculty.assign_subject_class.edit',compact('data'));
         }
         else 
         {

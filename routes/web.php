@@ -158,6 +158,7 @@ use App\Http\Controllers\GradesSetDateController;
 
      // request Form
     Route::get('/faculty/dashboard', [DashboardController::class, 'dashboard']);
+    Route::post('/faculty/setgrading', [DashboardController::class, 'setGrading']);
     Route::get('faculty/request/list', [RequestFormController::class, 'list']);
     Route::get('faculty/request/list{id}', [RequestFormController::class, 'remove']);
     Route::get('faculty/request/list/approved{form_id}', [RequestFormController::class, 'approved']);

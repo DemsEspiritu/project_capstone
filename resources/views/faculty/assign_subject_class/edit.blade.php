@@ -192,7 +192,7 @@
                             <select class="form-select" name="class_id" >
                             <option value="">--Select Class--</option>
                                 @foreach($data ['getRecord'] as $class)  
-                                <option {{($getRecords->class_id == $class_id) ? 'selected' : '' }} value="{{ $class->class_id }}">{{ $class->name }} {{ $class->section }}</option>
+                                <option {{($data['getRecords']->class_id == $class->class_id) ? 'selected' : '' }} value="{{ $class->class_id }}">{{ $class->name }} {{ $class->section }}</option>
                                 @endforeach
                              </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
@@ -221,7 +221,7 @@
                             <select class="form-select" name="school_year_id">
                             <option value="">--Select School Year--</option>
                                 @foreach($data ['getSchoolYearForAssign'] as $class)
-                                <option {{ ($getRecords->school_year_id == $school_year_id) ? 'selected' : '' }}  value="{{ $class->school_year_id }}">{{ $class->year_name }}</option>
+                                  <option {{ ($data['getRecords']->school_year_id == $class->school_year_id) ? 'selected' : '' }}  value="{{ $class->school_year_id }}">{{ $class->year_name }}</option>
                                 @endforeach
                             </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span>

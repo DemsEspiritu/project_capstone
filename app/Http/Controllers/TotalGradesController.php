@@ -7,8 +7,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\StudentProfile;
 use App\Models\TotalGrades;
+use App\Models\ClassModel;
 use App\Models\AssignClassTeacherModel;
 use App\Models\User;
+use App\Models\GradingLogModel;
 use App\Models\ClassSubjectModel;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -85,9 +87,26 @@ class TotalGradesController extends Controller
     {    
 
       $data['getStudentProfile'] = User::getSingle($id);
-
-      $subjects = ClassSubjectModel::getMyClassSubject(Auth::user()->id)->toArray();
+      
+      $subjects = ClassSubjectModel::getStudentSubject(Auth::user()->id,$data['getStudentProfile']->class_id)->toArray();
+      
       $grades = DB::table('total_grades_sbujects')->join('subject', 'total_grades_sbujects.subject_id', '=', 'subject.subject_id')->where('users_id', $data['getStudentProfile']->id)->where('school_year_id',$data['getStudentProfile']->school_year_id)->get()->toArray();
+
+
+      
+
+      $gradingFilter = GradingLogModel::where('school_year_id','=',2)->get();
+      $now = date('Y-m-d');
+      $now=date('Y-m-d', strtotime($now));
+      
+     foreach ($gradingFilter as $key => $value) {
+        if(($now >= $value->fromdate) && ($now <= $value->enddate)){
+            $gradingFilter = $value->description;
+        }
+     }
+     
+     
+   
       //tryyy 
 
 
@@ -95,7 +114,7 @@ class TotalGradesController extends Controller
 
       if(!empty($data['getStudentProfile']))
       {
-        return view('teacher.grades.list', compact('data','subjects','grades'));
+        return view('teacher.grades.list', compact('data','subjects','grades','gradingFilter'));
       }
       else
       {

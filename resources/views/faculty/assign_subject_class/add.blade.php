@@ -259,7 +259,8 @@
                     <tr>
                         <th>Subject</th>
                         <th>Teacher</th>
-                    
+                        <th>Date and Time</th>
+                        <th>Schedule</th>
                     </tr>
                     <tr>
                 
@@ -283,7 +284,65 @@
                                 </select>
                             <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
                         </td>
+                        <td>
+                            <div>
+                                <label>From:</label>
+                                <input type="time"
+                                    name="from"
+                                    class="form-control"
+                                />
+                            </div>
+                            <div>
+                                <label>To:</label>
+                                <input type="time"
+                                    name="to"
+                                    class="form-control"
+                                />
+                            </div>
+                            <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
+                        </td>
+                        <td>
+                            <div>
+                                <div>
+                                    <label>Monday</label>
+                                    <input type="checkbox"
+                                        value="M"
+                                        name="schedule[]"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Tuesday</label>
+                                    <input type="checkbox"
+                                        value="T"
+                                        name="schedule[]"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Wednesday</label>
+                                    <input type="checkbox"
+                                        value="W"  
+                                        name="schedule[]"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Thursday</label>
+                                    <input type="checkbox"
+                                        value="TH"
+                                        name="schedule[]"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Friday</label>
+                                    <input type="checkbox"
+                                        value="F"
+                                        name="schedule[]"
+                                    />
+                                </div>
 
+                                
+                            </div>
+                            <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
+                        </td>
                    
 
                         <!-- <button type="button" id="addRow" class="btn btn-primary">Add</button> -->

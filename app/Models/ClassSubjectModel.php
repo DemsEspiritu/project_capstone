@@ -95,6 +95,14 @@ class ClassSubjectModel extends Model
 
     }
 
+    static public function getStudentSubject($teacher_id,$classid){
+        return self::select('class_subject.*', 'class.name as class_name', 'subject.name as subject_name' , 'subject.description as subject_type'  ,'class.section as section_of_class')
+        ->join('class', 'class.class_id', '=', 'class_subject.class_id')
+        ->join('subject', 'subject.subject_id', '=', 'class_subject.subject_id')
+        ->where([['class_subject.teacher_id', '=' , $teacher_id],['class_subject.class_id','=',$classid]])   
+        ->get();
+    }
+
 
     //teacher my class subject
     static public function getMyClassSubject($teacher_id)
